@@ -9,7 +9,7 @@ export var clampPlayer:bool = true
 export var health = 5
 
 
-var projectilePrefab = preload("res://prefabs/projectiles/ProjectileTest.tscn")
+var projectilePrefab = preload("res://prefabs/projectiles/PlayerProjectileTest.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +24,7 @@ func _physics_process(dt):
 	var shoot_input = 	Input.is_action_just_pressed("ui_accept")
 	
 	motion = movement(dt, x_input, y_input)
+	shoot(shoot_input)
 	shoot(shoot_input)
 
 	motion.z = 0	

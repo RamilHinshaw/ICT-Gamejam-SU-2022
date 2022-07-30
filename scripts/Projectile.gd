@@ -32,3 +32,8 @@ func _on_body_entered(body):
 	#Player Projectile	
 	elif isFriendly && body.name != "Player":
 		body.hurt(damage)
+	
+	destroyProjectile()
+	
+func destroyProjectile():
+	queue_free()
