@@ -5,8 +5,8 @@
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/precision_multiplier = 0.6
-shader_param/modulate_color = Color( 0.662745, 0.701961, 0.796078, 1 )
+shader_param/precision_multiplier = 1.0
+shader_param/modulate_color = Color( 0.811765, 0.839216, 0.901961, 1 )
 shader_param/uv_scale = Vector2( 24, 24 )
 shader_param/uv_offset = Vector2( 0, 0 )
 shader_param/uv_pan_velocity = Vector2( 0, 0 )

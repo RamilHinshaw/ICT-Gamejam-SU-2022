@@ -96,14 +96,15 @@ audio_listener_enable_3d = true
 
 [node name="Player" type="KinematicBody" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport"]
 script = ExtResource( 9 )
+motion = Vector3( 0, 0, 3 )
 
 [node name="Camera" type="Camera" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Player"]
-transform = Transform( -1, 0, -8.74228e-08, -2.23967e-08, 0.966627, 0.256188, 8.45052e-08, 0.256188, -0.966627, 0, 3.3264, -3.23596 )
+transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, 0, 2.622, -7.947 )
 current = true
-fov = 68.1243
+fov = 67.3
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Player"]
-transform = Transform( -3.61292e-08, 0, 0.826539, 0, 0.156986, 0, -0.826539, 0, -3.61292e-08, -0.127219, 1.06515, -0.662588 )
+transform = Transform( -4.52018e-08, 0, 1.12999, 0, 0.182188, 0, -1.0341, 0, -4.93933e-08, -0.187877, 1.06515, -0.662588 )
 polygon = PoolVector2Array( -0.663166, 3.19723 )
 
 [node name="MeshInstance" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Player"]
@@ -117,15 +118,54 @@ transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 
 mesh = SubResource( 6 )
 material/0 = null
 
+[node name="MeshInstance2" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Player/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 6 )
+material/0 = null
+
 [node name="World" type="Spatial" parent="."]
 
 [node name="Floor" type="MeshInstance" parent="World"]
+transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 1.00176, 0, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 4 )
 
 [node name="FloorBody" type="StaticBody" parent="World/Floor"]
 
 [node name="CollisionShape" type="CollisionShape" parent="World/Floor/FloorBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
+shape = SubResource( 4 )
+
+[node name="Floor2" type="MeshInstance" parent="World"]
+transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 1.00176, 0, 0, 39.9976 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 4 )
+
+[node name="FloorBody" type="StaticBody" parent="World/Floor2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="World/Floor2/FloorBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
+shape = SubResource( 4 )
+
+[node name="Floor3" type="MeshInstance" parent="World"]
+transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 1.00176, 0, 0, 79.7189 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 4 )
+
+[node name="FloorBody" type="StaticBody" parent="World/Floor3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="World/Floor3/FloorBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
+shape = SubResource( 4 )
+
+[node name="Floor4" type="MeshInstance" parent="World"]
+transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 1.00176, 0, 0, 119.717 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 4 )
+
+[node name="FloorBody" type="StaticBody" parent="World/Floor4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="World/Floor4/FloorBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
 shape = SubResource( 4 )
 
