@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://post_process/pp_dither.tres" type="Material" id=1]
 [ext_resource path="res://post_process/pp_blur_mat.tres" type="Material" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://post_process/options.gd" type="Script" id=8]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=9]
 [ext_resource path="res://scripts/LevelController.gd" type="Script" id=10]
+[ext_resource path="res://prefabs/projectiles/ProjectileTest.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -17,6 +18,9 @@
 albedo_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="CubeMesh" id=6]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0, 0.156863, 1, 1 )
 
 [sub_resource type="PlaneMesh" id=3]
 size = Vector2( 40, 40 )
@@ -35,6 +39,8 @@ subdivide_height = 25
 subdivide_depth = 25
 
 [node name="Node" type="Node"]
+
+[node name="Projectile" parent="." instance=ExtResource( 11 )]
 
 [node name="PSXLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -96,9 +102,11 @@ audio_listener_enable_2d = true
 audio_listener_enable_3d = true
 
 [node name="Level Controller" type="KinematicBody" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72764, -11.7218 )
 script = ExtResource( 10 )
 speed = 2.0
-clampVertical = Vector2( 6.2, 0.1 )
+clampHorizontal = Vector2( -5.7, 5.7 )
+clampVertical = Vector2( -0.466, 6.1 )
 
 [node name="Camera" type="Camera" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller"]
 transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, 0, 2.622, -7.947 )
@@ -108,8 +116,8 @@ fov = 67.3
 [node name="Player" type="KinematicBody" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.665951, 0, 2.33826, 0 )
 script = ExtResource( 9 )
-speed = 5
-airFriction = 0.1
+speed = 9
+airFriction = 0.15
 motion = Vector3( 0, 0, 3 )
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Player"]
@@ -128,6 +136,33 @@ mesh = SubResource( 6 )
 material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Player/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="Enemy" type="KinematicBody" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller"]
+transform = Transform( -2.00433, 0, -1.81587e-07, 0, 2.00433, 0, 3.02646e-07, 0, -1.2026, 0, 2.33826, 26.851 )
+script = ExtResource( 9 )
+speed = 9
+airFriction = 0.15
+motion = Vector3( 0, 0, 3 )
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Enemy"]
+transform = Transform( -4.52018e-08, 0, 1.12999, 0, 0.182188, 0, -1.0341, 0, -4.93933e-08, -0.187877, -0.337792, -0.662588 )
+polygon = PoolVector2Array( -0.663166, 3.19723 )
+
+[node name="MeshInstance" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Enemy"]
+transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../../../../../../../../..")
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Enemy/MeshInstance"]
+transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Enemy/MeshInstance"]
 transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
 mesh = SubResource( 6 )
 material/0 = null

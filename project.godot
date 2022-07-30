@@ -8,8 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody",
+"class": "Character",
+"language": "GDScript",
+"path": "res://scripts/Character.gd"
+}, {
+"base": "Node",
+"class": "Interactable",
+"language": "GDScript",
+"path": "res://scripts/Interactable.gd"
+}, {
+"base": "KinematicBody",
+"class": "LevelController",
+"language": "GDScript",
+"path": "res://scripts/LevelController.gd"
+} ]
 _global_script_class_icons={
+"Character": "",
+"Interactable": "",
+"LevelController": ""
 }
 
 [application]
@@ -20,6 +38,11 @@ config/description="Demo project featuring a collection of PS1 style shaders and
 https://github.com/MenacingMecha/godot-psx-style-demo/"
 run/main_scene="res://post_process/pp_stack.tscn"
 config/icon="res://readme-assets/screenshot.png"
+
+[autoload]
+
+Global="*res://prefabs/Global.tscn"
+LevelSettings="*res://scripts/LevelSettings.gd"
 
 [display]
 
