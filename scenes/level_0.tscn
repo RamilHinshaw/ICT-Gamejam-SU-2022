@@ -1,18 +1,80 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://post_process/pp_dither.tres" type="Material" id=1]
-[ext_resource path="res://post_process/pp_blur_mat.tres" type="Material" id=2]
-[ext_resource path="res://post_process/pp_lcd_mat.tres" type="Material" id=3]
+[ext_resource path="res://scripts/Rotate.gd" type="Script" id=1]
+[ext_resource path="res://world/floor.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://world/floor.tres" type="Material" id=4]
-[ext_resource path="res://world/world_env.tres" type="Environment" id=5]
-[ext_resource path="res://post_process/value_label.gd" type="Script" id=6]
-[ext_resource path="res://world/orbit_camera.gd" type="Script" id=7]
-[ext_resource path="res://post_process/options.gd" type="Script" id=8]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=9]
+[ext_resource path="res://world/world_env.tres" type="Environment" id=8]
 [ext_resource path="res://scripts/LevelController.gd" type="Script" id=10]
-[ext_resource path="res://models/spaceship.fbx" type="PackedScene" id=11]
-[ext_resource path="res://scripts/Enemy.gd" type="Script" id=12]
-[ext_resource path="res://pixelart/cat.png" type="Texture" id=21]
+[ext_resource path="res://scripts/Enemy.gd" type="Script" id=11]
+[ext_resource path="res://models/spaceship/spaceship.fbx" type="PackedScene" id=12]
+[ext_resource path="res://pixelart/cat.png" type="Texture" id=13]
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("spaceship:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("spaceship:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("spaceship:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "lean_left"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("spaceship:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("spaceship:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("spaceship:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -34,608 +96,146 @@ size = Vector2( 40, 40 )
 subdivide_width = 25
 subdivide_depth = 25
 
+[sub_resource type="SpatialMaterial" id=10]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 7.418, 31.022, 1 )
+
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 3.0314, 1, 1 )
 
-[sub_resource type="CubeMesh" id=5]
-material = ExtResource( 4 )
-flip_faces = true
-size = Vector3( 40, 40, 40 )
-subdivide_width = 25
-subdivide_height = 25
-subdivide_depth = 25
-
 [node name="Node" type="Node"]
 
-[node name="PSXLayer" type="CanvasLayer" parent="."]
-layer = 0
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 8 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="PSXLayer"]
-environment = ExtResource( 5 )
-
-[node name="DirectionalLight" type="DirectionalLight" parent="PSXLayer"]
-transform = Transform( 0.524194, -0.536217, 0.661583, 0, 0.776871, 0.62966, -0.851599, -0.330064, 0.407231, 4.40183, 2.79045, 2.57139 )
-visible = false
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.524194, -0.536217, 0.661583, 0, 0.776871, 0.629659, -0.851599, -0.330064, 0.407231, 4.40183, 2.79045, 2.57139 )
 light_energy = 1.5
 
-[node name="BlurPostProcess" type="ViewportContainer" parent="PSXLayer"]
-material = ExtResource( 2 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-
-[node name="Viewport" type="Viewport" parent="PSXLayer/BlurPostProcess"]
-size = Vector2( 960, 720 )
-handle_input_locally = false
-render_target_update_mode = 3
-audio_listener_enable_2d = true
-audio_listener_enable_3d = true
-
-[node name="LCDOverlay" type="ViewportContainer" parent="PSXLayer/BlurPostProcess/Viewport"]
-material = ExtResource( 3 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay"]
-size = Vector2( 960, 720 )
-handle_input_locally = false
-render_target_update_mode = 3
-audio_listener_enable_2d = true
-audio_listener_enable_3d = true
-
-[node name="DitherBanding" type="ViewportContainer" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport"]
-material = ExtResource( 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-stretch = true
-stretch_shrink = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding"]
-size = Vector2( 320, 240 )
-handle_input_locally = false
-render_target_update_mode = 3
-audio_listener_enable_2d = true
-audio_listener_enable_3d = true
-
-[node name="Level Controller" type="KinematicBody" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport"]
+[node name="Level Controller" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72764, -11.7218 )
 script = ExtResource( 10 )
 speed = 2.0
 clampHorizontal = Vector2( -5.7, 5.7 )
 clampVertical = Vector2( -0.466, 6.1 )
 
-[node name="Camera" type="Camera" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller"]
+[node name="Camera" type="Camera" parent="Level Controller"]
 transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, 0, 2.622, -7.947 )
 current = true
 fov = 67.3
 
-[node name="Player" type="KinematicBody" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller"]
-transform = Transform( 1.00391, 0, 0, 0, 1.00391, 0, 0, 0, 0.668553, 0, 2.33826, 0 )
-script = ExtResource( 9 )
+[node name="Player" type="KinematicBody" parent="Level Controller"]
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 2.33826, 0 )
+script = ExtResource( 3 )
 speed = 9
 airFriction = 0.15
 motion = Vector3( 0, 0, 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Player"]
+[node name="AnimationPlayerShip" type="AnimationPlayer" parent="Level Controller/Player"]
+anims/RESET = SubResource( 11 )
+anims/lean_left = SubResource( 12 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level Controller/Player"]
 transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+visible = false
 mesh = SubResource( 1 )
-skeleton = NodePath("../../../../../../../../..")
+skeleton = NodePath("")
 material/0 = SubResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Player/MeshInstance"]
+[node name="MeshInstance" type="MeshInstance" parent="Level Controller/Player/MeshInstance"]
 transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
 mesh = SubResource( 6 )
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Player/MeshInstance"]
+[node name="MeshInstance2" type="MeshInstance" parent="Level Controller/Player/MeshInstance"]
 transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
 mesh = SubResource( 6 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Player"]
+[node name="CollisionShape" type="CollisionShape" parent="Level Controller/Player"]
 shape = SubResource( 8 )
 
-[node name="Enemy" type="KinematicBody" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller"]
-transform = Transform( -2.00433, 0, -1.81587e-07, 0, 2.00433, 0, 3.02646e-07, 0, -1.2026, 0, 2.33826, 26.851 )
-script = ExtResource( 12 )
+[node name="Node" type="Node" parent="Level Controller/Player"]
 
-[node name="CollisionPolygon" type="CollisionPolygon" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Enemy"]
+[node name="Cat Player" type="Sprite3D" parent="Level Controller/Player"]
+transform = Transform( 3.94056, 0, 0, 0, 3.94056, 0, 0, 0, 3.94056, -0.0534939, 0.403403, 0.137613 )
+texture = ExtResource( 13 )
+hframes = 4
+
+[node name="spaceship" parent="Level Controller/Player" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0469111, -0.246037, 0.137614 )
+script = ExtResource( 1 )
+speed = 2.0
+
+[node name="Enemy" type="KinematicBody" parent="Level Controller"]
+transform = Transform( -2.00433, 0, -1.81587e-07, 0, 2.00433, 0, 3.02646e-07, 0, -1.2026, 0, 2.33826, 26.851 )
+script = ExtResource( 11 )
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Level Controller/Enemy"]
 transform = Transform( -4.52018e-08, 0, 1.12999, 0, 0.182188, 0, -1.0341, 0, -4.93933e-08, -0.187877, -0.337792, -0.662588 )
 polygon = PoolVector2Array( -0.663166, 3.19723 )
 
-[node name="MeshInstance" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Enemy"]
+[node name="MeshInstance" type="MeshInstance" parent="Level Controller/Enemy"]
 transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
 mesh = SubResource( 1 )
-skeleton = NodePath("../../../../../../../../..")
+skeleton = NodePath("")
 material/0 = SubResource( 7 )
 
-[node name="MeshInstance" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Enemy/MeshInstance"]
+[node name="MeshInstance" type="MeshInstance" parent="Level Controller/Enemy/MeshInstance"]
 transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
 mesh = SubResource( 6 )
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Enemy/MeshInstance"]
+[node name="MeshInstance2" type="MeshInstance" parent="Level Controller/Enemy/MeshInstance"]
 transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
 mesh = SubResource( 6 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport/Level Controller/Enemy"]
+[node name="CollisionShape" type="CollisionShape" parent="Level Controller/Enemy"]
 shape = SubResource( 9 )
 
-[node name="World" type="Spatial" parent="."]
+[node name="_STATIC" type="Spatial" parent="."]
 
-[node name="Floor" type="MeshInstance" parent="World"]
-transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 1.00176, -0.0091126, 0.00862217, -0.00124002 )
+[node name="Floor" type="MeshInstance" parent="_STATIC"]
+transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 5.13366, -0.0091126, 0.00862217, 78.5623 )
 mesh = SubResource( 3 )
-material/0 = ExtResource( 4 )
+material/0 = SubResource( 10 )
 
-[node name="FloorBody" type="StaticBody" parent="World/Floor"]
+[node name="FloorBody" type="StaticBody" parent="_STATIC/Floor"]
 
-[node name="CollisionShape" type="CollisionShape" parent="World/Floor/FloorBody"]
+[node name="CollisionShape" type="CollisionShape" parent="_STATIC/Floor/FloorBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
 shape = SubResource( 4 )
 
-[node name="Floor2" type="MeshInstance" parent="World"]
+[node name="Floor2" type="MeshInstance" parent="_STATIC"]
 transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 1.00176, 0, 0, 39.9976 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 4 )
 
-[node name="FloorBody" type="StaticBody" parent="World/Floor2"]
+[node name="FloorBody" type="StaticBody" parent="_STATIC/Floor2"]
 
-[node name="CollisionShape" type="CollisionShape" parent="World/Floor2/FloorBody"]
+[node name="CollisionShape" type="CollisionShape" parent="_STATIC/Floor2/FloorBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
 shape = SubResource( 4 )
 
-[node name="Floor3" type="MeshInstance" parent="World"]
+[node name="Floor3" type="MeshInstance" parent="_STATIC"]
 transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 1.00176, 0, 0, 79.7189 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 4 )
 
-[node name="FloorBody" type="StaticBody" parent="World/Floor3"]
+[node name="FloorBody" type="StaticBody" parent="_STATIC/Floor3"]
 
-[node name="CollisionShape" type="CollisionShape" parent="World/Floor3/FloorBody"]
+[node name="CollisionShape" type="CollisionShape" parent="_STATIC/Floor3/FloorBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
 shape = SubResource( 4 )
 
-[node name="Floor4" type="MeshInstance" parent="World"]
+[node name="Floor4" type="MeshInstance" parent="_STATIC"]
 transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 1.00176, 0, 0, 119.717 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 4 )
 
-[node name="FloorBody" type="StaticBody" parent="World/Floor4"]
+[node name="FloorBody" type="StaticBody" parent="_STATIC/Floor4"]
 
-[node name="CollisionShape" type="CollisionShape" parent="World/Floor4/FloorBody"]
+[node name="CollisionShape" type="CollisionShape" parent="_STATIC/Floor4/FloorBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
 shape = SubResource( 4 )
-
-[node name="OrbitPoint" type="Spatial" parent="World"]
-pause_mode = 1
-transform = Transform( 0.831023, 0, -0.556238, 0, 1, 0, 0.556238, 0, 0.831023, 0, -2.38419e-07, -4.76837e-07 )
-script = ExtResource( 7 )
-rotate_camera = false
-
-[node name="DirectionalLight2" type="DirectionalLight" parent="World/OrbitPoint"]
-transform = Transform( 0.999229, -0.0247207, 0.0305003, 0, 0.776871, 0.629659, -0.0392604, -0.629174, 0.776272, 5.08833, 2.79045, -0.311581 )
-light_energy = 1.5
-
-[node name="Background" type="MeshInstance" parent="World"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
-visible = false
-mesh = SubResource( 5 )
-material/0 = null
-
-[node name="GUILayer" type="CanvasLayer" parent="."]
-layer = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUILayer"]
-anchor_left = 0.01
-anchor_top = 0.01
-anchor_right = 0.05
-anchor_bottom = 0.98
-margin_right = 108.0
-
-[node name="ToggleOptions" type="Button" parent="GUILayer/VBoxContainer"]
-self_modulate = Color( 1, 1, 1, 0.392157 )
-margin_right = 146.0
-margin_bottom = 20.0
-focus_mode = 0
-toggle_mode = true
-text = "Toggle Options"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="OptionsPanel" type="Panel" parent="GUILayer/VBoxContainer"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0.392157 )
-margin_top = 24.0
-margin_right = 146.0
-margin_bottom = 698.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource( 8 )
-post_process_lcd = ExtResource( 3 )
-post_process_blur = ExtResource( 2 )
-post_process_dither_band = ExtResource( 1 )
-environment = ExtResource( 5 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
-
-[node name="FPS" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_right = 138.0
-margin_bottom = 16.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FPS"]
-margin_top = 1.0
-margin_right = 22.0
-margin_bottom = 15.0
-text = "FPS"
-
-[node name="HSlider" type="HSlider" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FPS"]
-margin_left = 26.0
-margin_right = 118.0
-margin_bottom = 16.0
-focus_mode = 0
-size_flags_horizontal = 3
-min_value = 10.0
-max_value = 60.0
-value = 24.0
-
-[node name="Value" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FPS"]
-margin_left = 122.0
-margin_top = 1.0
-margin_right = 138.0
-margin_bottom = 15.0
-text = "24"
-script = ExtResource( 6 )
-
-[node name="HSeparator2" type="HSeparator" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 20.0
-margin_right = 138.0
-margin_bottom = 24.0
-
-[node name="ColorDepth" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 28.0
-margin_right = 138.0
-margin_bottom = 44.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/ColorDepth"]
-margin_top = 1.0
-margin_right = 67.0
-margin_bottom = 15.0
-text = "Col. Depth"
-
-[node name="HSlider" type="HSlider" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/ColorDepth"]
-margin_left = 71.0
-margin_right = 118.0
-margin_bottom = 16.0
-focus_mode = 0
-size_flags_horizontal = 3
-min_value = 1.0
-max_value = 32.0
-value = 15.0
-
-[node name="Value" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/ColorDepth"]
-margin_left = 122.0
-margin_top = 1.0
-margin_right = 138.0
-margin_bottom = 15.0
-text = "15"
-script = ExtResource( 6 )
-
-[node name="DitherBanding" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 48.0
-margin_right = 138.0
-margin_bottom = 72.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/DitherBanding"]
-margin_top = 5.0
-margin_right = 95.0
-margin_bottom = 19.0
-text = "Dither Banding"
-
-[node name="CheckBox" type="CheckBox" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/DitherBanding"]
-margin_left = 114.0
-margin_right = 138.0
-margin_bottom = 24.0
-focus_mode = 0
-size_flags_horizontal = 10
-pressed = true
-enabled_focus_mode = 0
-
-[node name="HSeparator4" type="HSeparator" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 76.0
-margin_right = 138.0
-margin_bottom = 80.0
-
-[node name="LCDOverlay" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 84.0
-margin_right = 138.0
-margin_bottom = 108.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOverlay"]
-margin_top = 5.0
-margin_right = 78.0
-margin_bottom = 19.0
-text = "LCD Overlay"
-
-[node name="CheckBox" type="CheckBox" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOverlay"]
-margin_left = 114.0
-margin_right = 138.0
-margin_bottom = 24.0
-focus_mode = 0
-size_flags_horizontal = 10
-enabled_focus_mode = 0
-
-[node name="LCDOpacity" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-visible = false
-margin_top = 112.0
-margin_right = 138.0
-margin_bottom = 128.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOpacity"]
-margin_top = 1.0
-margin_right = 49.0
-margin_bottom = 15.0
-text = "Opacity"
-
-[node name="HSlider" type="HSlider" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOpacity"]
-margin_left = 53.0
-margin_right = 114.0
-margin_bottom = 16.0
-focus_mode = 0
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-value = 0.5
-
-[node name="Value" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOpacity"]
-margin_left = 118.0
-margin_top = 1.0
-margin_right = 138.0
-margin_bottom = 15.0
-text = "0.5"
-script = ExtResource( 6 )
-
-[node name="LCDScanlineGap" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-visible = false
-margin_top = 132.0
-margin_right = 138.0
-margin_bottom = 148.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDScanlineGap"]
-margin_top = 1.0
-margin_right = 62.0
-margin_bottom = 15.0
-text = "Scan. Gap"
-
-[node name="HSlider" type="HSlider" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDScanlineGap"]
-margin_left = 66.0
-margin_right = 118.0
-margin_bottom = 16.0
-focus_mode = 0
-size_flags_horizontal = 3
-max_value = 16.0
-value = 4.0
-rounded = true
-
-[node name="Value" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDScanlineGap"]
-margin_left = 122.0
-margin_top = 1.0
-margin_right = 138.0
-margin_bottom = 15.0
-text = "04"
-script = ExtResource( 6 )
-
-[node name="HSeparator" type="HSeparator" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 152.0
-margin_right = 138.0
-margin_bottom = 156.0
-
-[node name="Fog" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 160.0
-margin_right = 138.0
-margin_bottom = 184.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/Fog"]
-margin_top = 5.0
-margin_right = 22.0
-margin_bottom = 19.0
-text = "Fog"
-
-[node name="CheckBox" type="CheckBox" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/Fog"]
-margin_left = 114.0
-margin_right = 138.0
-margin_bottom = 24.0
-focus_mode = 0
-size_flags_horizontal = 10
-pressed = true
-enabled_focus_mode = 0
-
-[node name="FogColor" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 188.0
-margin_right = 138.0
-margin_bottom = 208.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogColor"]
-margin_top = 3.0
-margin_right = 59.0
-margin_bottom = 17.0
-size_flags_horizontal = 5
-text = "Fog Color"
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogColor"]
-margin_left = 63.0
-margin_right = 138.0
-margin_bottom = 20.0
-focus_mode = 0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.8
-enabled_focus_mode = 0
-color = Color( 0.666667, 0.764706, 1, 0.960784 )
-
-[node name="FogBegin" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 212.0
-margin_right = 138.0
-margin_bottom = 228.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogBegin"]
-margin_top = 1.0
-margin_right = 36.0
-margin_bottom = 15.0
-text = "Begin"
-
-[node name="HSlider" type="HSlider" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogBegin"]
-margin_left = 40.0
-margin_right = 118.0
-margin_bottom = 16.0
-focus_mode = 0
-size_flags_horizontal = 3
-min_value = 1.0
-max_value = 30.0
-value = 6.0
-
-[node name="Value" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogBegin"]
-margin_left = 122.0
-margin_top = 1.0
-margin_right = 138.0
-margin_bottom = 15.0
-text = "06"
-script = ExtResource( 6 )
-
-[node name="FogEnd" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 232.0
-margin_right = 138.0
-margin_bottom = 248.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogEnd"]
-margin_top = 1.0
-margin_right = 35.0
-margin_bottom = 15.0
-text = "End   "
-
-[node name="HSlider" type="HSlider" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogEnd"]
-margin_left = 39.0
-margin_right = 118.0
-margin_bottom = 16.0
-focus_mode = 0
-size_flags_horizontal = 3
-min_value = 1.0
-max_value = 30.0
-value = 15.0
-
-[node name="Value" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogEnd"]
-margin_left = 122.0
-margin_top = 1.0
-margin_right = 138.0
-margin_bottom = 15.0
-text = "15"
-script = ExtResource( 6 )
-
-[node name="HSeparator3" type="HSeparator" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 252.0
-margin_right = 138.0
-margin_bottom = 256.0
-
-[node name="AmbientLight" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 260.0
-margin_right = 138.0
-margin_bottom = 280.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/AmbientLight"]
-margin_top = 3.0
-margin_right = 90.0
-margin_bottom = 17.0
-size_flags_horizontal = 3
-text = "Ambient Light"
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/AmbientLight"]
-margin_left = 94.0
-margin_right = 138.0
-margin_bottom = 20.0
-focus_mode = 0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.8
-enabled_focus_mode = 0
-color = Color( 1, 0.67451, 0.988235, 1 )
-edit_alpha = false
-
-[node name="AmbientEnergy" type="HBoxContainer" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer"]
-margin_top = 284.0
-margin_right = 138.0
-margin_bottom = 300.0
-
-[node name="Title" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/AmbientEnergy"]
-margin_top = 1.0
-margin_right = 42.0
-margin_bottom = 15.0
-text = "Energy"
-
-[node name="HSlider" type="HSlider" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/AmbientEnergy"]
-margin_left = 46.0
-margin_right = 106.0
-margin_bottom = 16.0
-focus_mode = 0
-size_flags_horizontal = 3
-max_value = 0.5
-step = 0.01
-value = 0.15
-
-[node name="Value" type="Label" parent="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/AmbientEnergy"]
-margin_left = 110.0
-margin_top = 1.0
-margin_right = 138.0
-margin_bottom = 15.0
-text = "0.15"
-script = ExtResource( 6 )
-
-[node name="Cat Player" type="Sprite3D" parent="."]
-transform = Transform( 3.94056, 0, 0, 0, 3.94056, 0, 0, 0, 3.94056, -0.100405, 4.17347, 0 )
-texture = ExtResource( 21 )
-hframes = 4
-
-[node name="spaceship" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52403, 0 )
-
-[connection signal="mouse_entered" from="GUILayer/VBoxContainer/ToggleOptions" to="GUILayer/VBoxContainer/ToggleOptions" method="set_self_modulate" flags=3 binds= [ Color( 1, 1, 1, 1 ) ]]
-[connection signal="mouse_exited" from="GUILayer/VBoxContainer/ToggleOptions" to="GUILayer/VBoxContainer/ToggleOptions" method="set_self_modulate" flags=3 binds= [ Color( 1, 1, 1, 0.392157 ) ]]
-[connection signal="toggled" from="GUILayer/VBoxContainer/ToggleOptions" to="GUILayer/VBoxContainer/OptionsPanel" method="set_visible" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FPS/HSlider" to="GUILayer/VBoxContainer/OptionsPanel" method="set_fov" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FPS/HSlider" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FPS/Value" method="set_text_from_value" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/ColorDepth/HSlider" to="GUILayer/VBoxContainer/OptionsPanel" method="set_color_depth" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/ColorDepth/HSlider" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/ColorDepth/Value" method="set_text_from_value" flags=3]
-[connection signal="toggled" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/DitherBanding/CheckBox" to="GUILayer/VBoxContainer/OptionsPanel" method="set_dither_banding" flags=3]
-[connection signal="toggled" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOverlay/CheckBox" to="GUILayer/VBoxContainer/OptionsPanel" method="set_post_process" flags=3]
-[connection signal="toggled" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOverlay/CheckBox" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOpacity" method="set_visible" flags=3]
-[connection signal="toggled" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOverlay/CheckBox" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDScanlineGap" method="set_visible" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOpacity/HSlider" to="GUILayer/VBoxContainer/OptionsPanel" method="set_lcd_opacity" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOpacity/HSlider" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDOpacity/Value" method="set_text_from_value" flags=3 binds= [ false ]]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDScanlineGap/HSlider" to="GUILayer/VBoxContainer/OptionsPanel" method="set_lcd_scanline_gap" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDScanlineGap/HSlider" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/LCDScanlineGap/Value" method="set_text_from_value" flags=3 binds= [ true ]]
-[connection signal="toggled" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/Fog/CheckBox" to="GUILayer/VBoxContainer/OptionsPanel" method="set_fog_enabled" flags=3]
-[connection signal="toggled" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/Fog/CheckBox" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogColor" method="set_visible" flags=3]
-[connection signal="toggled" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/Fog/CheckBox" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogBegin" method="set_visible" flags=3]
-[connection signal="toggled" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/Fog/CheckBox" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogEnd" method="set_visible" flags=3]
-[connection signal="color_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogColor/ColorPickerButton" to="GUILayer/VBoxContainer/OptionsPanel" method="set_fog_color" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogBegin/HSlider" to="GUILayer/VBoxContainer/OptionsPanel" method="set_fog_depth_begin" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogBegin/HSlider" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogBegin/Value" method="set_text_from_value" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogEnd/HSlider" to="GUILayer/VBoxContainer/OptionsPanel" method="set_fog_depth_end" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogEnd/HSlider" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/FogEnd/Value" method="set_text_from_value" flags=3]
-[connection signal="color_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/AmbientLight/ColorPickerButton" to="GUILayer/VBoxContainer/OptionsPanel" method="set_ambient_light_color" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/AmbientEnergy/HSlider" to="GUILayer/VBoxContainer/OptionsPanel" method="set_ambient_energy" flags=3]
-[connection signal="value_changed" from="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/AmbientEnergy/HSlider" to="GUILayer/VBoxContainer/OptionsPanel/VBoxContainer/AmbientEnergy/Value" method="set_text_from_value" flags=3 binds= [ false ]]

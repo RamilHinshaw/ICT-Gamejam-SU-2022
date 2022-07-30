@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/building2.fbx-481038aafff6c3c4d4174ddaccff30bf.scn"
+path="res://.import/building1.fbx-c91dac4b5cc2b61db7d6ded89c31b2d0.scn"
 
 [deps]
 
-source_file="res://models/building2.fbx"
-dest_files=[ "res://.import/building2.fbx-481038aafff6c3c4d4174ddaccff30bf.scn" ]
+source_file="res://models/spaceship/building1.fbx"
+dest_files=[ "res://.import/building1.fbx-c91dac4b5cc2b61db7d6ded89c31b2d0.scn" ]
 
 [params]
 

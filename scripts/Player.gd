@@ -8,7 +8,13 @@ export var clampPlayer:bool = true
 
 export var health = 5
 
+export var leanHorizontalMaxAngle:float = 35
+export var leanVerticalMaxAngle:float = 15
 
+# ONREADY
+onready var spaceship:Spatial = $spaceship
+
+# LOAD
 var projectilePrefab = preload("res://prefabs/projectiles/PlayerProjectileTest.tscn")
 
 
@@ -31,7 +37,9 @@ func _physics_process(dt):
 	move_and_slide(motion, Vector3.UP)
 	
 	
-	
+func lean(x_input, y_input):
+	spaceship.lo
+	pass
 	
 func movement(dt, x_input, y_input):
 
