@@ -8,8 +8,7 @@ func _ready():
 	print(LevelSettings.player.global_transform.origin.z)
 	timer = timerInit
 
-func AI_LOGIC(dt): 	
-	
+func AI_LOGIC(dt):	
 	
 	#AGGRO
 	var playerPos = LevelSettings.player.global_transform.origin.z
@@ -20,12 +19,18 @@ func AI_LOGIC(dt):
 	
 		if timer <= 0:
 			attack()
-	
-	
-	
 
 
 func attack():	
 #	print("EYE MONSTER FIRED!")
 	shoot(true)
 	timer = timerInit
+
+func shoot(shoot_input):
+	.shoot(shoot_input)
+	
+	if shoot_input == true:	
+		var playerPos = LevelSettings.player.global_transform.origin
+		var attackDir:Vector3 = playerPos - global_transform.origin
+		lastProjectile.setMotion(attackDir)
+	

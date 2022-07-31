@@ -13,11 +13,11 @@ export var fireOffset:Vector3 = Vector3.ZERO
 #INPUTS
 var x_input = 0
 var y_input  = 0
-var shoot_input:bool  = false
+var shoot_input:bool = false
 
 # LOAD
 export var projectilePrefab = preload("res://prefabs/projectiles/PlayerProjectileTest.tscn")
-var lastProjectile
+var lastProjectile:Projectile
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,7 +74,7 @@ func movement(dt, x_input, y_input):
 #func _process(dt):
 
 func shoot(shoot_input):
-	if shoot_input:
+	if shoot_input == true:
 		lastProjectile = projectilePrefab.instance()
 		get_tree().get_root().add_child(lastProjectile)
 		lastProjectile.global_transform.origin = global_transform.origin

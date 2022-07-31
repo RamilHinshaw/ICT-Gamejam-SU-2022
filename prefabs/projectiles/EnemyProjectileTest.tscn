@@ -19,10 +19,10 @@ emission_operator = 0
 emission_on_uv2 = false
 
 [node name="Projectile" type="KinematicBody"]
-transform = Transform( 0.217383, 0, 0, 0, 0.217383, 0, 0, 0, 0.217383, 0, 2.67238, 11.5497 )
+transform = Transform( 0.290397, 0, 0, 0, 0.290397, 0, 0, 0, 0.290397, 0, 2.67238, 11.5497 )
 collision_layer = 0
 script = ExtResource( 1 )
-speed = -20.0
+speed = 2.0
 
 [node name="Hitbox" type="Area" parent="."]
 collision_layer = 0
