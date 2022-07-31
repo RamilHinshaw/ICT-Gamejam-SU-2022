@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://scripts/Rotate.gd" type="Script" id=1]
 [ext_resource path="res://pixelart/ground/water.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://audio/sfx/Buff 1.wav" type="AudioStream" id=4]
 [ext_resource path="res://pixelart/eye.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Hazard.gd" type="Script" id=6]
-[ext_resource path="res://prefabs/enemies/EyeballMonster_Normal.gd" type="Script" id=7]
+[ext_resource path="res://scripts/Enemies/EyeballMonster_Normal.gd" type="Script" id=7]
 [ext_resource path="res://world/world_env.tres" type="Environment" id=8]
 [ext_resource path="res://prefabs/projectiles/EnemyProjectileTest.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/LevelController.gd" type="Script" id=10]
@@ -24,6 +24,9 @@
 [ext_resource path="res://models/spaceship/Material_005.material" type="Material" id=22]
 [ext_resource path="res://models/spaceship/Material_006.material" type="Material" id=23]
 [ext_resource path="res://models/spaceship/Material_003.material" type="Material" id=24]
+[ext_resource path="res://audio/sfx/Debuff 9.wav" type="AudioStream" id=25]
+[ext_resource path="res://scripts/EndLevelTrigger.gd" type="Script" id=26]
+[ext_resource path="res://prefabs/enemies/EnemyEye.tscn" type="PackedScene" id=27]
 
 [sub_resource type="Animation" id=11]
 length = 0.001
@@ -237,7 +240,7 @@ tracks/0/keys = {
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 3.0314, 1, 1 )
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=24]
 resource_name = "Idle"
 length = 1.7
 loop = true
@@ -276,7 +279,7 @@ extents = Vector3( 0.203441, 0.207592, 1 )
 flags_transparent = true
 albedo_color = Color( 1, 0.286275, 0.00784314, 0.831373 )
 
-[node name="Node" type="Node"]
+[node name="Level 1" type="Node"]
 script = ExtResource( 11 )
 music = ExtResource( 15 )
 
@@ -290,28 +293,28 @@ light_energy = 1.5
 [node name="Level Controller" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72764, -11.7218 )
 script = ExtResource( 10 )
-speed = 3.8
-clampHorizontal = Vector2( -6, 6 )
-clampVertical = Vector2( -0.466, 4.7 )
+speed = 4.0
+clampHorizontal = Vector2( -7, 7 )
+clampVertical = Vector2( -0.466, 6 )
 
 [node name="Camera" type="Camera" parent="Level Controller"]
 transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, 5.82938e-07, 3.23377, -13.1178 )
 current = true
-fov = 40.0
+fov = 35.0
 script = ExtResource( 14 )
 targetPath = NodePath("../Player")
 clampHorizontal = Vector2( -2, 2 )
-clampVertical = Vector2( -0.466, 2 )
+clampVertical = Vector2( -0.466, 4 )
 
 [node name="Player" type="KinematicBody" parent="Level Controller"]
 transform = Transform( 0.503988, 0, 0, 0, 0.503988, 0, 0, 0, 0.503988, 0, 2.33826, 0 )
 script = ExtResource( 3 )
-speed = 5
+speed = 6
 airFriction = 0.15
 clampToScreen = true
 motion = Vector3( 0, 0, 3 )
 fireOffset = Vector3( 0, 0, 1.5 )
-sfx_death = ExtResource( 4 )
+sfx_death = ExtResource( 25 )
 sfx_shoot = ExtResource( 16 )
 
 [node name="AnimationPlayerShip" type="AnimationPlayer" parent="Level Controller/Player"]
@@ -396,62 +399,66 @@ shape = SubResource( 4 )
 [node name="_ENEMIES" type="Spatial" parent="."]
 transform = Transform( -2.00433, 0, -1.81587e-07, 0, 2.00433, 0, 3.02646e-07, 0, -1.2026, 0, 4.0659, 15.1292 )
 
-[node name="EnemyEye" type="KinematicBody" parent="_ENEMIES"]
-transform = Transform( 0.554427, 0, -1.13687e-13, 0, 0.554427, 0, -4.68958e-13, 0, 0.554427, -5.03633e-11, 0, -86.2312 )
+[node name="EnemyEye" parent="_ENEMIES" instance=ExtResource( 27 )]
+
+[node name="EnemyFish" type="KinematicBody" parent="_ENEMIES"]
+transform = Transform( 0.695376, 0, -1.77636e-13, 0, 0.695376, 0, -7.10543e-13, 0, 0.695376, 3.81012, 0, -86.2312 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 7 )
 sfx_death = ExtResource( 4 )
 sfx_shoot = ExtResource( 17 )
 projectilePrefab = ExtResource( 9 )
-aggroRange = 80.0
-moveDir = Vector2( 15, 0 )
+aggroRange = 100.0
+sinSpeed = 1
+moveDir = Vector2( 2, 0 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/EnemyEye"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/EnemyFish"]
 autoplay = "Idle"
-anims/Idle = SubResource( 16 )
+anims/Idle = SubResource( 24 )
 
-[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyEye"]
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyFish"]
 transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
 visible = false
 mesh = SubResource( 14 )
 skeleton = NodePath("")
 material/0 = SubResource( 7 )
 
-[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyEye/MeshInstance"]
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyFish/MeshInstance"]
 transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
 mesh = SubResource( 15 )
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/EnemyEye/MeshInstance"]
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/EnemyFish/MeshInstance"]
 transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
 mesh = SubResource( 15 )
 material/0 = null
 
-[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/EnemyEye"]
-transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/EnemyFish"]
+transform = Transform( 1.29505, 0, 2.13163e-14, 0, 1.51607, 0, -2.84217e-14, 0, 1.29505, 0, 0, 0 )
 shape = SubResource( 9 )
 
-[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/EnemyEye"]
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/EnemyFish"]
 transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
 texture = ExtResource( 5 )
 hframes = 7
 
-[node name="Hitbox" type="Area" parent="_ENEMIES/EnemyEye"]
+[node name="Hitbox" type="Area" parent="_ENEMIES/EnemyFish"]
 transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/EnemyEye/Hitbox"]
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/EnemyFish/Hitbox"]
 transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
 shape = SubResource( 17 )
 
-[node name="Timer" type="Timer" parent="_ENEMIES/EnemyEye"]
+[node name="Timer" type="Timer" parent="_ENEMIES/EnemyFish"]
 autostart = true
 
-[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/EnemyEye"]
+[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/EnemyFish"]
 
 [node name="End Level Trigger" type="Area" parent="."]
-transform = Transform( -1.57032, 0, -1.42267e-07, 0, 1.57032, 0, 2.37112e-07, 0, -0.942192, 0.000229019, 4.0659, 1531.85 )
+transform = Transform( -2.7559, 0, -2.49678e-07, 0, 1.57032, 0, 2.37112e-07, 0, -0.942192, 0, 4.066, 400 )
+script = ExtResource( 26 )
 
 [node name="CollisionShape" type="CollisionShape" parent="End Level Trigger"]
 transform = Transform( 95.2326, 0, 8.53722e-06, 0, 55.2833, 0, 2.37145e-05, 0, 0.999999, 0, 0, 0 )
@@ -462,4 +469,5 @@ transform = Transform( 15.6328, 0, 1.32569e-06, 0, 18.4906, 0, 3.68248e-06, 0, 0
 mesh = SubResource( 19 )
 material/0 = SubResource( 20 )
 
-[connection signal="body_entered" from="_ENEMIES/EnemyEye/Hitbox" to="_ENEMIES/EnemyEye/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="_ENEMIES/EnemyFish/Hitbox" to="_ENEMIES/EnemyFish/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="End Level Trigger" to="End Level Trigger" method="_on_body_entered"]

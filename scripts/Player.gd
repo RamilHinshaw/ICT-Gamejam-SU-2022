@@ -58,5 +58,6 @@ func hurt(damage:int):
 	
 func death():
 	print("DEATH!")
+	Global.play_sfx(sfx_death)
 	Global.reset_level(true)
 

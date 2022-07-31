@@ -3,11 +3,18 @@ extends Enemy
 var timer = 0
 export var timerInit = 1;
 
+export var useSinVert:bool = false
+export var useSinHori:bool = false
+export var sinMagnitude = 5
+export var sinSpeed = 2
+
 export var moveDir:Vector2
 
+var sinVal:float
+
 func _ready():
-	print(global_transform.origin.z)
-	print(LevelSettings.player.global_transform.origin.z)
+#	print(global_transform.origin.z)
+#	print(LevelSettings.player.global_transform.origin.z)
 	timer = timerInit
 
 func AI_LOGIC(dt):	
@@ -23,8 +30,20 @@ func AI_LOGIC(dt):
 			attack()
 			
 #		movement(dt, moveDir.x, moveDir.y)
+		x_input = moveDir.x
+		y_input = moveDir.y
 		
-		motion = Vector3(moveDir.x, moveDir.y, 0)
+		
+		if useSinHori:
+			sinVal += dt * sinSpeed * moveDir.x
+			x_input = sin(sinVal) * sinMagnitude
+			
+		if useSinVert:
+			sinVal += dt * sinSpeed * moveDir.y
+			y_input = sin(sinVal) * sinMagnitude
+
+		
+#		motion = Vector3(moveDir.x, moveDir.y, 0)
 
 
 func attack():	

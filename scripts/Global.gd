@@ -47,7 +47,7 @@ func _ready():
 
 func _process(delta):
 	
-	if (get_tree().get_current_scene().get_name() == "Title"):
+	if (get_tree().get_current_scene().get_name() == "Title RE"):
 		return
 	
 	if Input.is_action_just_released("ui_reset"):
@@ -55,7 +55,7 @@ func _process(delta):
 		
 	if Input.is_action_just_released("ui_esc"):
 		#_audio_bgm.stop()
-		get_tree().change_scene("res://Scenes/Title.tscn")
+		get_tree().change_scene("res://scenes/Title RE.tscn")
 		current_level = 0
 		
 	if Input.is_action_just_released("ui_next"):

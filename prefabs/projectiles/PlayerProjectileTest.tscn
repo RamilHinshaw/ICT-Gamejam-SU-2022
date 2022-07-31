@@ -23,8 +23,8 @@ transform = Transform( 0.217383, 0, 0, 0, 0.217383, 0, 0, 0, 1.86462, 0, 2.67238
 collision_layer = 0
 collision_mask = 3
 script = ExtResource( 1 )
-speed = 40.0
-lifetime = 1.5
+speed = 65.0
+lifetime = 1.0
 isFriendly = true
 
 [node name="Hitbox" type="Area" parent="."]
