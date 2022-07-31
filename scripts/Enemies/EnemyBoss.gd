@@ -10,6 +10,9 @@ export var sinSpeed = 2
 
 export var moveDir:Vector2
 
+#export var projectilePrefab2 = preload("res://prefabs/projectiles/EnemyProjectileTest.tscn")
+#export var projectilePrefab2 = preload("res://prefabs/projectiles/EnemyProjectileTest.tscn")
+
 var sinVal:float
 
 func _ready():

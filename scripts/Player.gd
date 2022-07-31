@@ -17,6 +17,7 @@ onready var spaceship:Spatial = $spaceship
 func _ready():
 #	LevelSettings.player = self
 	playerControls()
+	Global.update_health(health)
 
 func _process(dt):
 	playerControls()
@@ -50,7 +51,8 @@ func lean(dt, x_input, y_input):
 	
 func hurt(damage:int):
 	health -= damage
-	print(health)
+#	print(health)
+	Global.update_health(health)
 	
 	if (health <= 0):
 		death()

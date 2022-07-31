@@ -24,7 +24,7 @@ var score:int = 0
 var scoreInLevel:int = 0
 
 onready var lb_score:Label = $UI/lb_score
-
+onready var lb_health:Label = $UI/lb_health
 
 #----------------------------------------------------------
 # FADE PROPERTIES
@@ -118,6 +118,9 @@ func next_level():
 		
 func update_score():
 	lb_score.text = str(score + scoreInLevel)
+
+func update_health(val):
+	lb_health.text = str(val)
 	
 func next_level_delay(delay:float):
 	Global.play_sfx(sfx_finished)

@@ -118,7 +118,7 @@ anims/FadeOutDeath = SubResource( 4 )
 
 [node name="UI" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="UI"]
+[node name="score" type="Label" parent="UI"]
 margin_right = 40.0
 margin_bottom = 14.0
 rect_scale = Vector2( 2.95544, 2.95544 )
@@ -131,6 +131,25 @@ margin_right = 188.0
 margin_bottom = 14.0
 rect_scale = Vector2( 3.30894, 3.30894 )
 theme = ExtResource( 7 )
+text = "0"
+
+[node name="health" type="Label" parent="UI"]
+margin_top = 41.0
+margin_right = 46.0
+margin_bottom = 55.0
+rect_scale = Vector2( 2.95544, 2.95544 )
+theme = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Health:"
+
+[node name="lb_health" type="Label" parent="UI"]
+margin_left = 148.0
+margin_top = 41.0
+margin_right = 200.0
+margin_bottom = 55.0
+rect_scale = Vector2( 3.30894, 3.30894 )
+theme = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "0"
 
 [node name="ProgressBar" type="ProgressBar" parent="UI"]
