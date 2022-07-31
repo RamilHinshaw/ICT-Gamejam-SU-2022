@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Camera",
+"class": "CameraController",
+"language": "GDScript",
+"path": "res://scripts/CameraController.gd"
+}, {
 "base": "KinematicBody",
 "class": "Character",
 "language": "GDScript",
@@ -28,12 +33,19 @@ _global_script_classes=[ {
 "class": "LevelController",
 "language": "GDScript",
 "path": "res://scripts/LevelController.gd"
+}, {
+"base": "Character",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scripts/Player.gd"
 } ]
 _global_script_class_icons={
+"CameraController": "",
 "Character": "",
 "Enemy": "",
 "Interactable": "",
-"LevelController": ""
+"LevelController": "",
+"Player": ""
 }
 
 [application]

@@ -1,6 +1,6 @@
 extends Character
 
-
+class_name Player
 
 export var canLean:bool = true
 
@@ -15,6 +15,7 @@ onready var spaceship:Spatial = $spaceship
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	LevelSettings.player = self
 	playerControls()
 
 func _process(dt):
@@ -34,6 +35,8 @@ func _physics_process(dt):
 	
 	# Call Base Physics
 	._physics_process(dt)
+	
+#	print(LevelSettings.player.transform.origin)
 	
 func lean(dt, x_input, y_input):
 	spaceship.rotation.z = lerp(spaceship.rotation.z, atan2(-x_input, 0)/2.5, 2.5 * dt)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scripts/Rotate.gd" type="Script" id=1]
 [ext_resource path="res://world/floor.png" type="Texture" id=2]
@@ -10,9 +10,9 @@
 [ext_resource path="res://world/world_env.tres" type="Environment" id=8]
 [ext_resource path="res://prefabs/projectiles/EnemyProjectileTest.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/LevelController.gd" type="Script" id=10]
-[ext_resource path="res://pixelart/boss.png" type="Texture" id=11]
 [ext_resource path="res://models/spaceship/spaceship.fbx" type="PackedScene" id=12]
 [ext_resource path="res://pixelart/cat.png" type="Texture" id=13]
+[ext_resource path="res://scripts/CameraController.gd" type="Script" id=14]
 
 [sub_resource type="Animation" id=11]
 length = 0.001
@@ -118,57 +118,6 @@ extents = Vector3( 0.635461, 0.340153, 1 )
 [sub_resource type="BoxShape" id=17]
 extents = Vector3( 0.20817, 0.190801, 1 )
 
-[sub_resource type="Animation" id=21]
-resource_name = "Idle"
-length = 1.7
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 5, 0, 5, 6, 0, 5, 6, 0, 5, 6 ]
-}
-
-[sub_resource type="Animation" id=22]
-resource_name = "Idle"
-length = 1.7
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 5, 0, 5, 6, 0, 5, 6, 0, 5, 6 ]
-}
-
-[sub_resource type="Animation" id=23]
-resource_name = "Idle"
-length = 1.7
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 5, 0, 5, 6, 0, 5, 6, 0, 5, 6 ]
-}
-
 [sub_resource type="BoxShape" id=18]
 extents = Vector3( 0.203441, 0.207592, 1 )
 
@@ -190,14 +139,18 @@ light_energy = 1.5
 [node name="Level Controller" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72764, -11.7218 )
 script = ExtResource( 10 )
-speed = 2.0
-clampHorizontal = Vector2( -4, 4 )
+speed = 3.8
+clampHorizontal = Vector2( -6, 6 )
 clampVertical = Vector2( -0.466, 4.7 )
 
 [node name="Camera" type="Camera" parent="Level Controller"]
-transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, -8.66368e-08, 2.53108, -5.45873 )
+transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, 4.76763e-07, 3.12234, -11.9033 )
 current = true
-fov = 67.3
+fov = 40.0
+script = ExtResource( 14 )
+targetPath = NodePath("../Player")
+clampHorizontal = Vector2( -2, 2 )
+clampVertical = Vector2( -0.466, 2 )
 
 [node name="Player" type="KinematicBody" parent="Level Controller"]
 transform = Transform( 0.503988, 0, 0, 0, 0.503988, 0, 0, 0, 0.503988, 0, 2.33826, 0 )
@@ -206,7 +159,7 @@ speed = 5
 airFriction = 0.15
 clampToScreen = true
 motion = Vector3( 0, 0, 3 )
-fireOffset = Vector3( 0, 0, 1 )
+fireOffset = Vector3( 0, 0, 1.5 )
 
 [node name="AnimationPlayerShip" type="AnimationPlayer" parent="Level Controller/Player"]
 anims/RESET = SubResource( 11 )
@@ -302,11 +255,12 @@ shape = SubResource( 4 )
 transform = Transform( -2.00433, 0, -1.81587e-07, 0, 2.00433, 0, 3.02646e-07, 0, -1.2026, 0, 4.0659, 15.1292 )
 
 [node name="EnemyEye" type="KinematicBody" parent="_ENEMIES"]
-transform = Transform( 0.554427, 0, -1.77636e-14, 0, 0.554427, 0, -5.68434e-14, 0, 0.554427, 0, 0, 0 )
+transform = Transform( 0.554427, 0, -4.9738e-14, 0, 0.554427, 0, -2.13163e-13, 0, 0.554427, -4.67253e-11, 0, -86.9201 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 7 )
 projectilePrefab = ExtResource( 9 )
+aggroRange = 50.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/EnemyEye"]
 autoplay = "Idle"
@@ -350,149 +304,6 @@ shape = SubResource( 17 )
 [node name="Timer" type="Timer" parent="_ENEMIES/EnemyEye"]
 autostart = true
 
-[node name="EnemyEye2" type="KinematicBody" parent="_ENEMIES"]
-transform = Transform( 0.554427, 0, -3.19744e-14, 0, 0.554427, 0, -5.68434e-14, 0, 0.554427, -2.76354, 0, -20.8818 )
-collision_layer = 2
-collision_mask = 0
-script = ExtResource( 7 )
-projectilePrefab = ExtResource( 9 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/EnemyEye2"]
-autoplay = "Idle"
-anims/Idle = SubResource( 21 )
-
-[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyEye2"]
-transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
-visible = false
-mesh = SubResource( 14 )
-skeleton = NodePath("")
-material/0 = SubResource( 7 )
-
-[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyEye2/MeshInstance"]
-transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
-mesh = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/EnemyEye2/MeshInstance"]
-transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
-mesh = SubResource( 15 )
-material/0 = null
-
-[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/EnemyEye2"]
-transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 9 )
-
-[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/EnemyEye2"]
-transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
-texture = ExtResource( 5 )
-hframes = 7
-
-[node name="Hitbox" type="Area" parent="_ENEMIES/EnemyEye2"]
-transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
-script = ExtResource( 6 )
-
-[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/EnemyEye2/Hitbox"]
-transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
-shape = SubResource( 17 )
-
-[node name="Timer" type="Timer" parent="_ENEMIES/EnemyEye2"]
-autostart = true
-
-[node name="EnemyEye3" type="KinematicBody" parent="_ENEMIES"]
-transform = Transform( 0.554427, 0, -6.03961e-14, 0, 0.554427, 0, -5.68434e-14, 0, 0.554427, 2.89141, -0.302402, -9.82155 )
-collision_layer = 2
-collision_mask = 0
-script = ExtResource( 7 )
-projectilePrefab = ExtResource( 9 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/EnemyEye3"]
-autoplay = "Idle"
-anims/Idle = SubResource( 22 )
-
-[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyEye3"]
-transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
-visible = false
-mesh = SubResource( 14 )
-skeleton = NodePath("")
-material/0 = SubResource( 7 )
-
-[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyEye3/MeshInstance"]
-transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
-mesh = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/EnemyEye3/MeshInstance"]
-transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
-mesh = SubResource( 15 )
-material/0 = null
-
-[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/EnemyEye3"]
-transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 9 )
-
-[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/EnemyEye3"]
-transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
-texture = ExtResource( 5 )
-hframes = 7
-
-[node name="Hitbox" type="Area" parent="_ENEMIES/EnemyEye3"]
-transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
-script = ExtResource( 6 )
-
-[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/EnemyEye3/Hitbox"]
-transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
-shape = SubResource( 17 )
-
-[node name="Timer" type="Timer" parent="_ENEMIES/EnemyEye3"]
-autostart = true
-
-[node name="Angel Boss" type="KinematicBody" parent="_ENEMIES"]
-transform = Transform( 0.554427, 0, -6.03961e-14, 0, 0.554427, 0, -5.68434e-14, 0, 0.554427, 2.89141, -0.302402, -9.82155 )
-collision_layer = 2
-collision_mask = 0
-script = ExtResource( 7 )
-projectilePrefab = ExtResource( 9 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/Angel Boss"]
-autoplay = "Idle"
-anims/Idle = SubResource( 23 )
-
-[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Angel Boss"]
-transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
-visible = false
-mesh = SubResource( 14 )
-skeleton = NodePath("")
-material/0 = SubResource( 7 )
-
-[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Angel Boss/MeshInstance"]
-transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
-mesh = SubResource( 15 )
-material/0 = null
-
-[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/Angel Boss/MeshInstance"]
-transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
-mesh = SubResource( 15 )
-material/0 = null
-
-[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/Angel Boss"]
-transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 9 )
-
-[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/Angel Boss"]
-transform = Transform( 13.2278, 0, 3.86535e-12, 0, 13.2278, 0, 1.36424e-12, 0, 30.6823, -5.76585, 7.75479, -164.419 )
-texture = ExtResource( 11 )
-
-[node name="Hitbox" type="Area" parent="_ENEMIES/Angel Boss"]
-transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
-script = ExtResource( 6 )
-
-[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/Angel Boss/Hitbox"]
-transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
-shape = SubResource( 17 )
-
-[node name="Timer" type="Timer" parent="_ENEMIES/Angel Boss"]
-autostart = true
-
 [node name="End Level Trigger" type="Area" parent="."]
 transform = Transform( -1.57032, 0, -1.42267e-07, 0, 1.57032, 0, 2.37112e-07, 0, -0.942192, 2.32304e-05, 4.0659, 168.977 )
 
@@ -506,6 +317,3 @@ mesh = SubResource( 19 )
 material/0 = SubResource( 20 )
 
 [connection signal="body_entered" from="_ENEMIES/EnemyEye/Hitbox" to="_ENEMIES/EnemyEye/Hitbox" method="_on_body_entered"]
-[connection signal="body_entered" from="_ENEMIES/EnemyEye2/Hitbox" to="_ENEMIES/EnemyEye2/Hitbox" method="_on_body_entered"]
-[connection signal="body_entered" from="_ENEMIES/EnemyEye3/Hitbox" to="_ENEMIES/EnemyEye3/Hitbox" method="_on_body_entered"]
-[connection signal="body_entered" from="_ENEMIES/Angel Boss/Hitbox" to="_ENEMIES/Angel Boss/Hitbox" method="_on_body_entered"]
