@@ -22,7 +22,9 @@ func AI_LOGIC(dt):
 		if timer <= 0:
 			attack()
 			
-		movement(dt, moveDir.x, moveDir.y)
+#		movement(dt, moveDir.x, moveDir.y)
+		
+		motion = Vector3(moveDir.x, moveDir.y, 0)
 
 
 func attack():	

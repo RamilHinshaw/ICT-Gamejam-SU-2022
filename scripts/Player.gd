@@ -21,6 +21,8 @@ func _ready():
 func _process(dt):
 	playerControls()
 	
+	._process(dt)
+	
 func playerControls():
 		# PLAYER CONTROLS
 	x_input = (Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right"))
@@ -56,4 +58,5 @@ func hurt(damage:int):
 	
 func death():
 	print("DEATH!")
+	Global.reset_level(true)
 

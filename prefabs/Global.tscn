@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Global.gd" type="Script" id=1]
+[ext_resource path="res://scenes/level_0.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Title RE.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeIn"
@@ -70,7 +72,9 @@ tracks/0/keys = {
 pause_mode = 2
 position = Vector2( 0, 3 )
 script = ExtResource( 1 )
-levels = [ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ]
+levels = [ ExtResource( 2 ), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ]
+last_level = ExtResource( 3 )
+title_level = ExtResource( 3 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 autoplay = true

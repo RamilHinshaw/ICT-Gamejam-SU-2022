@@ -60,7 +60,7 @@ config/name="ICT GameJam Summer 2022"
 config/description="Demo project featuring a collection of PS1 style shaders and materials for Godot engine.
 (MIT License)
 https://github.com/MenacingMecha/godot-psx-style-demo/"
-run/main_scene="res://scenes/level_0.tscn"
+run/main_scene="res://scenes/Title RE.tscn"
 config/icon="res://readme-assets/screenshot.png"
 
 [autoload]

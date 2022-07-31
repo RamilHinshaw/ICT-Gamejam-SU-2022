@@ -1,7 +1,5 @@
 extends Character
 
-export var clampPlayer:bool = true
-
 #When it can see the player
 export var aggroRange:float = 40 
 
@@ -20,4 +18,5 @@ func hurt(damage:int):
 		death()
 
 func death():
+	Global.play_sfx(sfx_death)
 	queue_free()

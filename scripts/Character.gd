@@ -32,12 +32,14 @@ func _ready():
 func _physics_process(dt):
 	
 	movement(dt, x_input, y_input)
-#	lean(dt, x_input, y_input)
-	
-	shoot(shoot_input)
+#	lean(dt, x_input, y_input)	
 
 		
 	move_and_slide(motion, Vector3.UP)
+	
+	
+func _process(dt):
+	shoot(shoot_input)
 
 func movement(dt, x_input, y_input):
 	

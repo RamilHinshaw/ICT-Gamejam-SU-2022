@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Magical Impact 11.wav-57a20d386be725ee43c1018cfbddc824.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Magical Impact 11.wav"
+dest_files=[ "res://.import/Magical Impact 11.wav-57a20d386be725ee43c1018cfbddc824.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
