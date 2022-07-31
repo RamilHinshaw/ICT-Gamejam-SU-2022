@@ -11,9 +11,9 @@ albedo_color = Color( 1, 0, 0, 1 )
 material = SubResource( 9 )
 
 [sub_resource type="SpatialMaterial" id=10]
-albedo_color = Color( 0, 1, 0.0627451, 1 )
+albedo_color = Color( 1, 0, 0, 1 )
 emission_enabled = true
-emission = Color( 0.101961, 0.980392, 0.529412, 1 )
+emission = Color( 0.980392, 0.576471, 0.101961, 1 )
 emission_energy = 7.17
 emission_operator = 0
 emission_on_uv2 = false
@@ -21,13 +21,11 @@ emission_on_uv2 = false
 [node name="Projectile" type="KinematicBody"]
 transform = Transform( 0.217383, 0, 0, 0, 0.217383, 0, 0, 0, 0.217383, 0, 2.67238, 11.5497 )
 collision_layer = 0
-collision_mask = 3
 script = ExtResource( 1 )
-speed = 20.0
-isFriendly = true
+speed = -20.0
 
 [node name="Hitbox" type="Area" parent="."]
-collision_mask = 3
+collision_layer = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Hitbox"]
 shape = SubResource( 7 )

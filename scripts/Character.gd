@@ -8,6 +8,8 @@ export var airFriction:float = 0.25
 export var clampToScreen:bool = false
 export var motion:Vector3 = Vector3.ZERO
 
+export var fireOffset:Vector3 = Vector3.ZERO
+
 #INPUTS
 var x_input = 0
 var y_input  = 0
@@ -61,7 +63,7 @@ func movement(dt, x_input, y_input):
 	if clampToScreen == false:
 		motionX = targetDir.x * speed
 		motionY = targetDir.y * speed
-		print(transform.origin)
+#		print(transform.origin)
 
 	motion.x = lerp(motionX, 0, airFriction)
 	motion.y = lerp(motionY, 0, airFriction)
@@ -75,8 +77,7 @@ func shoot(shoot_input):
 		var projectile = projectilePrefab.instance()
 		get_tree().get_root().add_child(projectile)
 		projectile.global_transform.origin = global_transform.origin
-		projectile.global_transform.origin.z += 1
-
+		projectile.global_transform.origin += fireOffset
 	
 func hurt(damage:int):
 	pass

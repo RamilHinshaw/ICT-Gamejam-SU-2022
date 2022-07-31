@@ -1,19 +1,14 @@
 extends Character
 
-
 export var clampPlayer:bool = true
 
-#var projectilePrefab = preload("res://prefabs/PlayerProjectiles/ProjectileTest.tscn")
+class_name Enemy
 
-func _physics_process(delta):
+func AI_LOGIC():
 	pass
 
-func shoot(shoot_input):
-	pass
-	
-func movement(dt, x_input, y_input):
-	pass
-
+func _process(delta):
+	AI_LOGIC()
 	
 func hurt(damage:int):
 	health -= damage
