@@ -54,6 +54,10 @@ func hurt(damage:int):
 	
 	if (health <= 0):
 		death()
+		
+	else:
+		Global.play_sfx(sfx_hurt)
+#		Global.fadeRed()
 	
 	
 func death():

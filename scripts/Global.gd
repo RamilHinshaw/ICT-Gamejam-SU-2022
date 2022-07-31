@@ -107,6 +107,16 @@ func reset_values():
 	return
 #	is_selected_vanishing_block_red = true
 	
+func fadeRed():
+	_death_subtext = "Death"
+	_control.visible = true
+	_anim_fade.play("FadeIn" + _death_subtext)
+	
+	yield(_anim_fade, "animation_finished")	
+	yield(get_tree().create_timer(0.1), "timeout")
+	_death_subtext = ""
+	
+
 func change_scenePacked(scene:PackedScene, transition:int = 0):	
 	
 	_control.visible = true

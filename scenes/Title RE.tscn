@@ -133,7 +133,7 @@ light_energy = 1.5
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72764, -11.7218 )
 
 [node name="Camera" type="Camera" parent="Level Controller"]
-transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, 4.76763e-07, 3.12234, -11.9033 )
+transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, -1.67174e-07, 3.29743, -4.53752 )
 current = true
 fov = 40.0
 script = ExtResource( 14 )
@@ -142,7 +142,7 @@ clampHorizontal = Vector2( -2, 2 )
 clampVertical = Vector2( -0.466, 2 )
 
 [node name="Player" type="KinematicBody" parent="Level Controller"]
-transform = Transform( 0.503988, 0, 0, 0, 0.503988, 0, 0, 0, 0.503988, 0, -0.641907, 0 )
+transform = Transform( 0.503988, 0, 0, 0, 0.503988, 0, 0, 0, 0.503988, 0.00362825, -0.714361, -0.00641155 )
 
 [node name="AnimationPlayerShip" type="AnimationPlayer" parent="Level Controller/Player"]
 anims/RESET = SubResource( 11 )
@@ -185,7 +185,7 @@ script = ExtResource( 1 )
 [node name="Cat Player" type="Sprite3D" parent="Level Controller/Player/spaceship"]
 transform = Transform( 6.00536, 0, 0, 0, 6.00536, 0, 0, 0, 6.00536, -0.224774, 0.933005, -0.0478745 )
 texture = ExtResource( 13 )
-hframes = 4
+hframes = 6
 frame = 1
 
 [node name="_STATIC" type="Spatial" parent="."]

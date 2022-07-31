@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Angry-cat-sounds.wav-d74b6464c5f68b0547f37ed20e789879.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Angry-cat-sounds.wav"
+dest_files=[ "res://.import/Angry-cat-sounds.wav-d74b6464c5f68b0547f37ed20e789879.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

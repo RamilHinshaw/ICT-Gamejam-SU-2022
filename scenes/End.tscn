@@ -65,7 +65,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.2, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 0, 2 ]
 }
 
 [sub_resource type="CubeMesh" id=1]
@@ -136,7 +136,7 @@ light_energy = 1.5
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72764, -11.7218 )
 
 [node name="Camera" type="Camera" parent="Level Controller"]
-transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, 4.76763e-07, 3.12234, -11.9033 )
+transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, -9.65864e-08, 2.52064, -5.34495 )
 current = true
 fov = 40.0
 script = ExtResource( 14 )
@@ -188,8 +188,7 @@ script = ExtResource( 1 )
 [node name="Cat Player" type="Sprite3D" parent="Level Controller/Player/spaceship"]
 transform = Transform( 6.00536, 0, 0, 0, 6.00536, 0, 0, 0, 6.00536, -0.224774, 0.933005, -0.0478745 )
 texture = ExtResource( 13 )
-hframes = 4
-frame = 1
+hframes = 6
 
 [node name="_STATIC" type="Spatial" parent="."]
 visible = false

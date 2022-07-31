@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://scripts/Rotate.gd" type="Script" id=1]
 [ext_resource path="res://pixelart/ground/water.png" type="Texture" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://scripts/EndLevelTrigger.gd" type="Script" id=26]
 [ext_resource path="res://prefabs/enemies/EnemyEye.tscn" type="PackedScene" id=27]
 [ext_resource path="res://pixelart/dragon.png" type="Texture" id=28]
+[ext_resource path="res://audio/sfx/Angry-cat-sounds.wav" type="AudioStream" id=29]
 
 [sub_resource type="Animation" id=11]
 length = 0.001
@@ -78,7 +79,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.2, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 5, 4 ]
 }
 
 [sub_resource type="CubeMesh" id=1]
@@ -327,6 +328,7 @@ clampVertical = Vector2( -0.466, 4 )
 [node name="Player" type="KinematicBody" parent="Level Controller"]
 transform = Transform( 0.503988, 0, 0, 0, 0.503988, 0, 0, 0, 0.503988, 0, 2.33826, 0 )
 script = ExtResource( 3 )
+health = 3
 speed = 6
 airFriction = 0.15
 clampToScreen = true
@@ -334,6 +336,7 @@ motion = Vector3( 0, 0, 3 )
 fireOffset = Vector3( 0, 0, 1.5 )
 sfx_death = ExtResource( 25 )
 sfx_shoot = ExtResource( 16 )
+sfx_hurt = ExtResource( 29 )
 
 [node name="AnimationPlayerShip" type="AnimationPlayer" parent="Level Controller/Player"]
 anims/RESET = SubResource( 11 )
@@ -393,8 +396,8 @@ material/7 = null
 transform = Transform( 6.00536, 0, 0, 0, 6.00536, 0, 0, 0, 6.00536, -0.224774, 0.933005, -0.0478745 )
 opacity = 0.65
 texture = ExtResource( 13 )
-hframes = 4
-frame = 1
+hframes = 6
+frame = 5
 
 [node name="_STATIC" type="Spatial" parent="."]
 
@@ -479,7 +482,7 @@ autostart = true
 [node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/EnemyFish"]
 
 [node name="EnemyDragon" type="KinematicBody" parent="_ENEMIES"]
-transform = Transform( 0.695374, 0, -1.77636e-13, 0, 0.695374, 0, -9.9476e-13, 0, 0.695376, -7.63411, -0.653424, -119.523 )
+transform = Transform( 0.695374, 0, -1.77636e-13, 0, 0.695374, 0, -1.0516e-12, 0, 0.695376, -4.78324, -0.653423, -119.523 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 7 )

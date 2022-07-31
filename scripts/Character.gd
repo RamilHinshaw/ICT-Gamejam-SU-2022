@@ -18,6 +18,7 @@ var shoot_input:bool = false
 #AUDIO
 export var sfx_death:AudioStream
 export var sfx_shoot:AudioStream
+export var sfx_hurt:AudioStream
 
 # LOAD
 export var projectilePrefab = preload("res://prefabs/projectiles/PlayerProjectileTest.tscn")
