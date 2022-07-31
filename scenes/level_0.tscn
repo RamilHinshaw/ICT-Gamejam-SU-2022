@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scripts/Rotate.gd" type="Script" id=1]
 [ext_resource path="res://world/floor.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://world/floor.tres" type="Material" id=4]
+[ext_resource path="res://pixelart/eye.png" type="Texture" id=5]
+[ext_resource path="res://scripts/Hazard.gd" type="Script" id=6]
 [ext_resource path="res://world/world_env.tres" type="Environment" id=8]
 [ext_resource path="res://scripts/LevelController.gd" type="Script" id=10]
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=11]
@@ -12,36 +14,6 @@
 
 [sub_resource type="Animation" id=11]
 length = 0.001
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("spaceship/rotatePart:rotation_degrees:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("spaceship/rotatePart:rotation_degrees:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("spaceship/rotatePart:rotation_degrees:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
 
 [sub_resource type="Animation" id=12]
 resource_name = "lean_left"
@@ -76,6 +48,22 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "cat_idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("spaceship/Cat Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
 [sub_resource type="CubeMesh" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
@@ -85,11 +73,6 @@ albedo_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 0.467604, 0.493648, 1 )
-
-[sub_resource type="SpatialMaterial" id=7]
-albedo_color = Color( 0, 0.156863, 1, 1 )
-
-[sub_resource type="BoxShape" id=9]
 
 [sub_resource type="PlaneMesh" id=3]
 size = Vector2( 40, 40 )
@@ -102,6 +85,36 @@ uv1_scale = Vector3( 7.418, 31.022, 1 )
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 3.0314, 1, 1 )
+
+[sub_resource type="Animation" id=16]
+resource_name = "Idle"
+length = 1.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 5, 0, 5, 6, 0, 5, 6, 0, 5, 6 ]
+}
+
+[sub_resource type="CubeMesh" id=14]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0, 0.156863, 1, 1 )
+
+[sub_resource type="CubeMesh" id=15]
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 0.882488, 0.526813, 1 )
+
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 0.20817, 0.190801, 1 )
 
 [node name="Node" type="Node"]
 
@@ -120,20 +133,25 @@ clampHorizontal = Vector2( -5.7, 5.7 )
 clampVertical = Vector2( -0.466, 6.1 )
 
 [node name="Camera" type="Camera" parent="Level Controller"]
-transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, 0, 2.622, -7.947 )
+transform = Transform( -1, -7.98717e-09, 8.70572e-08, 0, 0.995818, 0.0913626, -8.74228e-08, 0.0913626, -0.995818, -8.66368e-08, 2.53108, -6.95599 )
 current = true
 fov = 67.3
 
 [node name="Player" type="KinematicBody" parent="Level Controller"]
-transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 2.33826, 0 )
+transform = Transform( 0.503988, 0, 0, 0, 0.503988, 0, 0, 0, 0.503988, 0, 2.33826, 0 )
 script = ExtResource( 3 )
-speed = 9
+speed = 4
 airFriction = 0.15
+clampToScreen = true
 motion = Vector3( 0, 0, 3 )
 
 [node name="AnimationPlayerShip" type="AnimationPlayer" parent="Level Controller/Player"]
 anims/RESET = SubResource( 11 )
 anims/lean_left = SubResource( 12 )
+
+[node name="AnimationPlayerCat" type="AnimationPlayer" parent="Level Controller/Player"]
+autoplay = "cat_idle"
+anims/cat_idle = SubResource( 13 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level Controller/Player"]
 transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
@@ -152,7 +170,7 @@ transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0,
 mesh = SubResource( 6 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Level Controller/Player"]
+[node name="Hurtbox" type="CollisionShape" parent="Level Controller/Player"]
 shape = SubResource( 8 )
 
 [node name="Node" type="Node" parent="Level Controller/Player"]
@@ -165,36 +183,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.72529e-09, 0, 0 )
 script = ExtResource( 1 )
 
 [node name="Cat Player" type="Sprite3D" parent="Level Controller/Player/spaceship"]
-transform = Transform( 3.94056, 0, 0, 0, 3.94056, 0, 0, 0, 3.94056, -0.100405, 0.649439, 0 )
+transform = Transform( 6.00536, 0, 0, 0, 6.00536, 0, 0, 0, 6.00536, -0.224774, 0.933005, -0.0478745 )
 texture = ExtResource( 13 )
 hframes = 4
-
-[node name="Enemy" type="KinematicBody" parent="Level Controller"]
-transform = Transform( -2.00433, 0, -1.81587e-07, 0, 2.00433, 0, 3.02646e-07, 0, -1.2026, 0, 2.33826, 26.851 )
-script = ExtResource( 11 )
-
-[node name="CollisionPolygon" type="CollisionPolygon" parent="Level Controller/Enemy"]
-transform = Transform( -4.52018e-08, 0, 1.12999, 0, 0.182188, 0, -1.0341, 0, -4.93933e-08, -0.187877, -0.337792, -0.662588 )
-polygon = PoolVector2Array( -0.663166, 3.19723 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Level Controller/Enemy"]
-transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
-mesh = SubResource( 1 )
-skeleton = NodePath("")
-material/0 = SubResource( 7 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Level Controller/Enemy/MeshInstance"]
-transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
-mesh = SubResource( 6 )
-material/0 = null
-
-[node name="MeshInstance2" type="MeshInstance" parent="Level Controller/Enemy/MeshInstance"]
-transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
-mesh = SubResource( 6 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Level Controller/Enemy"]
-shape = SubResource( 9 )
+frame = 1
 
 [node name="_STATIC" type="Spatial" parent="."]
 
@@ -241,3 +233,51 @@ material/0 = ExtResource( 4 )
 [node name="CollisionShape" type="CollisionShape" parent="_STATIC/Floor4/FloorBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
 shape = SubResource( 4 )
+
+[node name="_ENEMIES" type="Spatial" parent="."]
+transform = Transform( -2.00433, 0, -1.81587e-07, 0, 2.00433, 0, 3.02646e-07, 0, -1.2026, 0, 4.0659, 15.1292 )
+
+[node name="EnemyEye" type="KinematicBody" parent="_ENEMIES"]
+transform = Transform( 0.783462, 0, -2.13163e-14, 0, 0.783462, 0, -8.52651e-14, 0, 0.783463, 0, 0, 0 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/EnemyEye"]
+autoplay = "Idle"
+anims/Idle = SubResource( 16 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyEye"]
+transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+visible = false
+mesh = SubResource( 14 )
+skeleton = NodePath("")
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyEye/MeshInstance"]
+transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/EnemyEye/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/EnemyEye"]
+shape = SubResource( 9 )
+
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/EnemyEye"]
+transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
+texture = ExtResource( 5 )
+hframes = 7
+
+[node name="Hitbox" type="Area" parent="_ENEMIES/EnemyEye"]
+transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/EnemyEye/Hitbox"]
+transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[connection signal="body_entered" from="_ENEMIES/EnemyEye/Hitbox" to="_ENEMIES/EnemyEye/Hitbox" method="_on_body_entered"]

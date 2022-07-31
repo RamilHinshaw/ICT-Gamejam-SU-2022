@@ -15,3 +15,5 @@ fog_depth_curve = 1.27456
 fog_transmit_curve = 1.03526
 dof_blur_near_distance = 10.37
 glow_enabled = true
+glow_strength = 1.04
+glow_bloom = 0.08
