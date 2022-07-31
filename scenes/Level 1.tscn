@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://scripts/Rotate.gd" type="Script" id=1]
 [ext_resource path="res://pixelart/ground/water.png" type="Texture" id=2]
@@ -15,7 +15,7 @@
 [ext_resource path="res://pixelart/cat.png" type="Texture" id=13]
 [ext_resource path="res://scripts/CameraController.gd" type="Script" id=14]
 [ext_resource path="res://audio/music/Water_Level_Final.wav" type="AudioStream" id=15]
-[ext_resource path="res://audio/sfx/Magical Impact 12.wav" type="AudioStream" id=16]
+[ext_resource path="res://audio/sfx/LaserSFX.wav" type="AudioStream" id=16]
 [ext_resource path="res://audio/sfx/Magical Impact 11.wav" type="AudioStream" id=17]
 [ext_resource path="res://models/spaceship/Material_001.material" type="Material" id=18]
 [ext_resource path="res://models/spaceship/rim.material" type="Material" id=19]
@@ -29,6 +29,7 @@
 [ext_resource path="res://prefabs/enemies/EnemyEye.tscn" type="PackedScene" id=27]
 [ext_resource path="res://pixelart/dragon.png" type="Texture" id=28]
 [ext_resource path="res://audio/sfx/Angry-cat-sounds.wav" type="AudioStream" id=29]
+[ext_resource path="res://audio/sfx/LevelCompleteSFX.wav" type="AudioStream" id=30]
 
 [sub_resource type="Animation" id=11]
 length = 0.001
@@ -272,6 +273,142 @@ extents = Vector3( 0.635461, 0.340153, 1 )
 [sub_resource type="BoxShape" id=17]
 extents = Vector3( 0.20817, 0.190801, 1 )
 
+[sub_resource type="Animation" id=27]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
 [sub_resource type="Animation" id=25]
 resource_name = "Idle"
 length = 1.2
@@ -420,11 +557,17 @@ shape = SubResource( 4 )
 [node name="_ENEMIES" type="Spatial" parent="."]
 transform = Transform( -2.00433, 0, -1.81587e-07, 0, 2.00433, 0, 3.02646e-07, 0, -1.2026, 0, 4.0659, 15.1292 )
 
-[node name="EnemyEye" parent="_ENEMIES" instance=ExtResource( 27 )]
-transform = Transform( 0.695376, 0, -1.77636e-13, 0, 0.695376, 0, -6.96332e-13, 0, 0.695376, 8.38995, 0, -86.2312 )
+[node name="Wave1" type="Spatial" parent="_ENEMIES"]
+transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 0 )
 
-[node name="EnemyFish" type="KinematicBody" parent="_ENEMIES"]
-transform = Transform( 0.695375, 0, -1.77636e-13, 0, 0.695375, 0, -8.81073e-13, 0, 0.695376, -11.0782, -0.653425, -86.2312 )
+[node name="EnemyEye" parent="_ENEMIES/Wave1" instance=ExtResource( 27 )]
+transform = Transform( 0.695375, 0, -1.7053e-13, 0, 0.695375, 0, -8.10019e-13, 0, 0.695376, 8.38996, 0, -77.399 )
+
+[node name="Wave2" type="Spatial" parent="_ENEMIES"]
+transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 0 )
+
+[node name="EnemyFish" type="KinematicBody" parent="_ENEMIES/Wave2"]
+transform = Transform( 0.695375, 0, -1.7053e-13, 0, 0.695375, 0, -9.52127e-13, 0, 0.695376, -11.0782, -0.653424, -114.621 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 7 )
@@ -437,52 +580,543 @@ sinMagnitude = 4
 sinSpeed = 1
 moveDir = Vector2( -1.5, 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/EnemyFish"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/Wave2/EnemyFish"]
 autoplay = "Idle"
 anims/Idle = SubResource( 24 )
 
-[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyFish"]
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave2/EnemyFish"]
 transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
 visible = false
 mesh = SubResource( 14 )
 skeleton = NodePath("")
 material/0 = SubResource( 7 )
 
-[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyFish/MeshInstance"]
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave2/EnemyFish/MeshInstance"]
 transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
 mesh = SubResource( 15 )
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/EnemyFish/MeshInstance"]
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/Wave2/EnemyFish/MeshInstance"]
 transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
 mesh = SubResource( 15 )
 material/0 = null
 
-[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/EnemyFish"]
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/Wave2/EnemyFish"]
 transform = Transform( 1.29505, 0, 2.13163e-14, 0, 1.51607, 0, -2.84217e-14, 0, 1.29505, 0, 0, 0 )
 shape = SubResource( 9 )
 
-[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/EnemyFish"]
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/Wave2/EnemyFish"]
 transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
 flip_h = true
 texture = ExtResource( 5 )
 hframes = 2
 
-[node name="Hitbox" type="Area" parent="_ENEMIES/EnemyFish"]
+[node name="Hitbox" type="Area" parent="_ENEMIES/Wave2/EnemyFish"]
 transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/EnemyFish/Hitbox"]
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/Wave2/EnemyFish/Hitbox"]
 transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
 shape = SubResource( 17 )
 
-[node name="Timer" type="Timer" parent="_ENEMIES/EnemyFish"]
+[node name="Timer" type="Timer" parent="_ENEMIES/Wave2/EnemyFish"]
 autostart = true
 
-[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/EnemyFish"]
+[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/Wave2/EnemyFish"]
+
+[node name="EnemyFish3" type="KinematicBody" parent="_ENEMIES/Wave2"]
+transform = Transform( 0.695374, 0, -1.7053e-13, 0, 0.695374, 0, -1.08002e-12, 0, 0.695376, 14.5751, -0.653423, -131.935 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 7 )
+sfx_death = ExtResource( 4 )
+sfx_shoot = ExtResource( 17 )
+projectilePrefab = ExtResource( 9 )
+aggroRange = 100.0
+useSinVert = true
+sinMagnitude = 4
+sinSpeed = 1
+moveDir = Vector2( 1.5, 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/Wave2/EnemyFish3"]
+autoplay = "Idle"
+anims/Idle = SubResource( 27 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave2/EnemyFish3"]
+transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+visible = false
+mesh = SubResource( 14 )
+skeleton = NodePath("")
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave2/EnemyFish3/MeshInstance"]
+transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/Wave2/EnemyFish3/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/Wave2/EnemyFish3"]
+transform = Transform( 1.29505, 0, 2.13163e-14, 0, 1.51607, 0, -2.84217e-14, 0, 1.29505, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/Wave2/EnemyFish3"]
+transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
+texture = ExtResource( 5 )
+hframes = 2
+
+[node name="Hitbox" type="Area" parent="_ENEMIES/Wave2/EnemyFish3"]
+transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/Wave2/EnemyFish3/Hitbox"]
+transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="_ENEMIES/Wave2/EnemyFish3"]
+autostart = true
+
+[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/Wave2/EnemyFish3"]
+
+[node name="EnemyFish4" type="KinematicBody" parent="_ENEMIES/Wave2"]
+transform = Transform( 0.695374, 0, -1.7053e-13, 0, 0.695374, 0, -1.10845e-12, 0, 0.695376, -11.045, -0.653424, -153.983 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 7 )
+sfx_death = ExtResource( 4 )
+sfx_shoot = ExtResource( 17 )
+projectilePrefab = ExtResource( 9 )
+aggroRange = 100.0
+useSinVert = true
+sinMagnitude = 4
+sinSpeed = 1
+moveDir = Vector2( -1.5, 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/Wave2/EnemyFish4"]
+autoplay = "Idle"
+anims/Idle = SubResource( 28 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave2/EnemyFish4"]
+transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+visible = false
+mesh = SubResource( 14 )
+skeleton = NodePath("")
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave2/EnemyFish4/MeshInstance"]
+transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/Wave2/EnemyFish4/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/Wave2/EnemyFish4"]
+transform = Transform( 1.29505, 0, 2.13163e-14, 0, 1.51607, 0, -2.84217e-14, 0, 1.29505, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/Wave2/EnemyFish4"]
+transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
+flip_h = true
+texture = ExtResource( 5 )
+hframes = 2
+
+[node name="Hitbox" type="Area" parent="_ENEMIES/Wave2/EnemyFish4"]
+transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/Wave2/EnemyFish4/Hitbox"]
+transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="_ENEMIES/Wave2/EnemyFish4"]
+autostart = true
+
+[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/Wave2/EnemyFish4"]
+
+[node name="Wave3" type="Spatial" parent="_ENEMIES"]
+transform = Transform( 1, 0, -9.9476e-14, 0, 1, 0, -5.68434e-14, 0, 1, 0, 0, 0 )
+
+[node name="EnemyEye2" parent="_ENEMIES/Wave3" instance=ExtResource( 27 )]
+transform = Transform( 0.695375, 0, -1.7053e-13, 0, 0.695375, 0, -8.3844e-13, 0, 0.695376, -10.6217, -1.42456, -208.107 )
+moveDir = Vector2( -2, 0 )
+
+[node name="EnemyEye3" parent="_ENEMIES/Wave3" instance=ExtResource( 27 )]
+transform = Transform( 0.695375, 0, -1.7053e-13, 0, 0.695375, 0, -8.81073e-13, 0, 0.695376, -10.6217, 0.151936, -208.107 )
+moveDir = Vector2( -2, 0 )
+
+[node name="EnemyEye4" parent="_ENEMIES/Wave3" instance=ExtResource( 27 )]
+transform = Transform( 0.695375, 0, -1.7053e-13, 0, 0.695375, 0, -9.09495e-13, 0, 0.695376, -10.6217, 1.59528, -208.107 )
+moveDir = Vector2( -2, 0 )
+
+[node name="EnemyEye5" parent="_ENEMIES/Wave3" instance=ExtResource( 27 )]
+transform = Transform( 0.695375, 0, -1.7053e-13, 0, 0.695375, 0, -9.23706e-13, 0, 0.695376, 11.4824, -1.42456, -208.107 )
+
+[node name="EnemyEye6" parent="_ENEMIES/Wave3" instance=ExtResource( 27 )]
+transform = Transform( 0.695375, 0, -1.7053e-13, 0, 0.695375, 0, -9.37916e-13, 0, 0.695376, 11.4824, 0.151936, -208.107 )
+
+[node name="EnemyEye7" parent="_ENEMIES/Wave3" instance=ExtResource( 27 )]
+transform = Transform( 0.695375, 0, -1.7053e-13, 0, 0.695375, 0, -9.66338e-13, 0, 0.695376, 11.4824, 1.59528, -208.107 )
+
+[node name="Wave4" type="Spatial" parent="_ENEMIES"]
+transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 0 )
+
+[node name="EnemyFish2" type="KinematicBody" parent="_ENEMIES/Wave4"]
+transform = Transform( 0.695374, 0, -1.7053e-13, 0, 0.695374, 0, -1.00897e-12, 0, 0.695376, -11.0782, -0.653424, -268.112 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 7 )
+sfx_death = ExtResource( 4 )
+sfx_shoot = ExtResource( 17 )
+projectilePrefab = ExtResource( 9 )
+aggroRange = 100.0
+useSinVert = true
+sinMagnitude = 4
+sinSpeed = 1
+moveDir = Vector2( -1.5, 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish2"]
+autoplay = "Idle"
+anims/Idle = SubResource( 26 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish2"]
+transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+visible = false
+mesh = SubResource( 14 )
+skeleton = NodePath("")
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish2/MeshInstance"]
+transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish2/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish2"]
+transform = Transform( 1.29505, 0, 2.13163e-14, 0, 1.51607, 0, -2.84217e-14, 0, 1.29505, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/Wave4/EnemyFish2"]
+transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
+flip_h = true
+texture = ExtResource( 5 )
+hframes = 2
+
+[node name="Hitbox" type="Area" parent="_ENEMIES/Wave4/EnemyFish2"]
+transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish2/Hitbox"]
+transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="_ENEMIES/Wave4/EnemyFish2"]
+autostart = true
+
+[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish2"]
+
+[node name="EnemyFish3" type="KinematicBody" parent="_ENEMIES/Wave4"]
+transform = Transform( 0.695374, 0, -1.7053e-13, 0, 0.695374, 0, -1.10845e-12, 0, 0.695376, 13.7358, -0.653423, -268.112 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 7 )
+sfx_death = ExtResource( 4 )
+sfx_shoot = ExtResource( 17 )
+projectilePrefab = ExtResource( 9 )
+aggroRange = 100.0
+useSinVert = true
+sinMagnitude = 4
+sinSpeed = 1
+moveDir = Vector2( 1.5, 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish3"]
+autoplay = "Idle"
+anims/Idle = SubResource( 29 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish3"]
+transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+visible = false
+mesh = SubResource( 14 )
+skeleton = NodePath("")
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish3/MeshInstance"]
+transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish3/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish3"]
+transform = Transform( 1.29505, 0, 2.13163e-14, 0, 1.51607, 0, -2.84217e-14, 0, 1.29505, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/Wave4/EnemyFish3"]
+transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
+texture = ExtResource( 5 )
+hframes = 2
+
+[node name="Hitbox" type="Area" parent="_ENEMIES/Wave4/EnemyFish3"]
+transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish3/Hitbox"]
+transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="_ENEMIES/Wave4/EnemyFish3"]
+autostart = true
+
+[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish3"]
+
+[node name="EnemyFish4" type="KinematicBody" parent="_ENEMIES/Wave4"]
+transform = Transform( 0.695374, 0, -1.7053e-13, 0, 0.695374, 0, -1.03739e-12, 0, 0.695376, -11.0782, -0.653423, -280.669 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 7 )
+sfx_death = ExtResource( 4 )
+sfx_shoot = ExtResource( 17 )
+projectilePrefab = ExtResource( 9 )
+aggroRange = 100.0
+useSinVert = true
+sinMagnitude = 4
+sinSpeed = 1
+moveDir = Vector2( -1.5, 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish4"]
+autoplay = "Idle"
+anims/Idle = SubResource( 30 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish4"]
+transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+visible = false
+mesh = SubResource( 14 )
+skeleton = NodePath("")
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish4/MeshInstance"]
+transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish4/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish4"]
+transform = Transform( 1.29505, 0, 2.13163e-14, 0, 1.51607, 0, -2.84217e-14, 0, 1.29505, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/Wave4/EnemyFish4"]
+transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
+flip_h = true
+texture = ExtResource( 5 )
+hframes = 2
+
+[node name="Hitbox" type="Area" parent="_ENEMIES/Wave4/EnemyFish4"]
+transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish4/Hitbox"]
+transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="_ENEMIES/Wave4/EnemyFish4"]
+autostart = true
+
+[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish4"]
+
+[node name="EnemyFish5" type="KinematicBody" parent="_ENEMIES/Wave4"]
+transform = Transform( 0.695374, 0, -1.7053e-13, 0, 0.695374, 0, -1.13687e-12, 0, 0.695376, 13.7358, -0.653423, -280.669 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 7 )
+sfx_death = ExtResource( 4 )
+sfx_shoot = ExtResource( 17 )
+projectilePrefab = ExtResource( 9 )
+aggroRange = 100.0
+useSinVert = true
+sinMagnitude = 4
+sinSpeed = 1
+moveDir = Vector2( 1.5, 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish5"]
+autoplay = "Idle"
+anims/Idle = SubResource( 31 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish5"]
+transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+visible = false
+mesh = SubResource( 14 )
+skeleton = NodePath("")
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish5/MeshInstance"]
+transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish5/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish5"]
+transform = Transform( 1.29505, 0, 2.13163e-14, 0, 1.51607, 0, -2.84217e-14, 0, 1.29505, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/Wave4/EnemyFish5"]
+transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
+texture = ExtResource( 5 )
+hframes = 2
+
+[node name="Hitbox" type="Area" parent="_ENEMIES/Wave4/EnemyFish5"]
+transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish5/Hitbox"]
+transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="_ENEMIES/Wave4/EnemyFish5"]
+autostart = true
+
+[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish5"]
+
+[node name="EnemyFish6" type="KinematicBody" parent="_ENEMIES/Wave4"]
+transform = Transform( 0.695374, 0, -1.7053e-13, 0, 0.695374, 0, -1.08002e-12, 0, 0.695376, -11.0782, -0.653423, -290.228 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 7 )
+sfx_death = ExtResource( 4 )
+sfx_shoot = ExtResource( 17 )
+projectilePrefab = ExtResource( 9 )
+aggroRange = 100.0
+useSinVert = true
+sinMagnitude = 4
+sinSpeed = 1
+moveDir = Vector2( -1.5, 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish6"]
+autoplay = "Idle"
+anims/Idle = SubResource( 32 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish6"]
+transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+visible = false
+mesh = SubResource( 14 )
+skeleton = NodePath("")
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish6/MeshInstance"]
+transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish6/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish6"]
+transform = Transform( 1.29505, 0, 2.13163e-14, 0, 1.51607, 0, -2.84217e-14, 0, 1.29505, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/Wave4/EnemyFish6"]
+transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
+flip_h = true
+texture = ExtResource( 5 )
+hframes = 2
+
+[node name="Hitbox" type="Area" parent="_ENEMIES/Wave4/EnemyFish6"]
+transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish6/Hitbox"]
+transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="_ENEMIES/Wave4/EnemyFish6"]
+autostart = true
+
+[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish6"]
+
+[node name="EnemyFish7" type="KinematicBody" parent="_ENEMIES/Wave4"]
+transform = Transform( 0.695374, 0, -1.7053e-13, 0, 0.695374, 0, -1.16529e-12, 0, 0.695376, 13.7358, -0.653422, -290.228 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 7 )
+sfx_death = ExtResource( 4 )
+sfx_shoot = ExtResource( 17 )
+projectilePrefab = ExtResource( 9 )
+aggroRange = 100.0
+useSinVert = true
+sinMagnitude = 4
+sinSpeed = 1
+moveDir = Vector2( 1.5, 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish7"]
+autoplay = "Idle"
+anims/Idle = SubResource( 33 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish7"]
+transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+visible = false
+mesh = SubResource( 14 )
+skeleton = NodePath("")
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish7/MeshInstance"]
+transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/Wave4/EnemyFish7/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish7"]
+transform = Transform( 1.29505, 0, 2.13163e-14, 0, 1.51607, 0, -2.84217e-14, 0, 1.29505, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/Wave4/EnemyFish7"]
+transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
+texture = ExtResource( 5 )
+hframes = 2
+
+[node name="Hitbox" type="Area" parent="_ENEMIES/Wave4/EnemyFish7"]
+transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/Wave4/EnemyFish7/Hitbox"]
+transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="_ENEMIES/Wave4/EnemyFish7"]
+autostart = true
+
+[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/Wave4/EnemyFish7"]
+
+[node name="Wave5" type="Spatial" parent="_ENEMIES"]
+transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 0 )
 
 [node name="EnemyDragon" type="KinematicBody" parent="_ENEMIES"]
-transform = Transform( 0.695374, 0, -1.77636e-13, 0, 0.695374, 0, -1.0516e-12, 0, 0.695376, -4.78324, -0.653423, -119.523 )
+transform = Transform( 0.695374, 0, -1.77636e-13, 0, 0.695374, 0, -1.06581e-12, 0, 0.695376, -4.78324, -0.653423, -119.523 )
+visible = false
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 7 )
@@ -540,8 +1174,9 @@ autostart = true
 [node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/EnemyDragon"]
 
 [node name="End Level Trigger" type="Area" parent="."]
-transform = Transform( -2.7559, 0, -2.49678e-07, 0, 1.57032, 0, 2.37112e-07, 0, -0.942192, 0, 4.066, 400 )
+transform = Transform( -2.7559, 0, -2.49678e-07, 0, 1.57032, 0, 2.37112e-07, 0, -0.942192, 0.278371, 4.066, 454.744 )
 script = ExtResource( 26 )
+sfx_finished = ExtResource( 30 )
 
 [node name="CollisionShape" type="CollisionShape" parent="End Level Trigger"]
 transform = Transform( 95.2326, 0, 8.53722e-06, 0, 55.2833, 0, 2.37145e-05, 0, 0.999999, 0, 0, 0 )
@@ -552,6 +1187,14 @@ transform = Transform( 15.6328, 0, 1.32569e-06, 0, 18.4906, 0, 3.68248e-06, 0, 0
 mesh = SubResource( 19 )
 material/0 = SubResource( 20 )
 
-[connection signal="body_entered" from="_ENEMIES/EnemyFish/Hitbox" to="_ENEMIES/EnemyFish/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="_ENEMIES/Wave2/EnemyFish/Hitbox" to="_ENEMIES/Wave2/EnemyFish/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="_ENEMIES/Wave2/EnemyFish3/Hitbox" to="_ENEMIES/Wave2/EnemyFish3/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="_ENEMIES/Wave2/EnemyFish4/Hitbox" to="_ENEMIES/Wave2/EnemyFish4/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="_ENEMIES/Wave4/EnemyFish2/Hitbox" to="_ENEMIES/Wave4/EnemyFish2/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="_ENEMIES/Wave4/EnemyFish3/Hitbox" to="_ENEMIES/Wave4/EnemyFish3/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="_ENEMIES/Wave4/EnemyFish4/Hitbox" to="_ENEMIES/Wave4/EnemyFish4/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="_ENEMIES/Wave4/EnemyFish5/Hitbox" to="_ENEMIES/Wave4/EnemyFish5/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="_ENEMIES/Wave4/EnemyFish6/Hitbox" to="_ENEMIES/Wave4/EnemyFish6/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="_ENEMIES/Wave4/EnemyFish7/Hitbox" to="_ENEMIES/Wave4/EnemyFish7/Hitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="_ENEMIES/EnemyDragon/Hitbox" to="_ENEMIES/EnemyDragon/Hitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="End Level Trigger" to="End Level Trigger" method="_on_body_entered"]

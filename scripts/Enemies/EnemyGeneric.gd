@@ -1,7 +1,7 @@
 extends Enemy
 
 var timer = 0
-export var attackDelay = 1;
+export var attackDelay:float = 1;
 
 export var useSinVert:bool = false
 export var useSinHori:bool = false
