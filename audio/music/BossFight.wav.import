@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/BossFight.wav-c85ce9770571f749d4154fd747c20a35.sample"
+path="res://.import/BossFight.wav-f247120661e5bfb3778dc6943c3bb1f1.sample"
 
 [deps]
 
-source_file="res://audio/sfx/BossFight.wav"
-dest_files=[ "res://.import/BossFight.wav-c85ce9770571f749d4154fd747c20a35.sample" ]
+source_file="res://audio/music/BossFight.wav"
+dest_files=[ "res://.import/BossFight.wav-f247120661e5bfb3778dc6943c3bb1f1.sample" ]
 
 [params]
 

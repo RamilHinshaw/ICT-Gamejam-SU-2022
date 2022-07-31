@@ -3,6 +3,7 @@ extends Node
 #export var sfx_level_complete:AudioStream
 
 export var current_level:int = 0
+export var sfx_finished:AudioStream
 #var is_paused: bool = false
 #
 #
@@ -15,7 +16,12 @@ export var title_level:PackedScene
 #Used to change fade name
 var _death_subtext = ""
 
+export var playerHealth:int = 3
+export var bossHealth:int = 5
+var score:int = 0
+var scoreInLevel:int = 0
 
+onready var lb_score:Label = $UI/lb_score
 
 
 #----------------------------------------------------------
@@ -70,6 +76,8 @@ func _process(delta):
 func camera_shake():
 	pass
 	
+func showBossHealth():
+	pass
 
 func next_level():
 	_death_subtext = ""
@@ -86,16 +94,37 @@ func next_level():
 		
 	#IF END SCENE
 	if (get_tree().get_current_scene().get_name() == "End"):
+		score = 0
 		scene = title_level
 	
 	change_scenePacked(scene)
+	
+	#Add score
+	score += scoreInLevel
+	scoreInLevel = 0
+	lb_score.text = str(score)
+	
+	#IF BOSS SCENE
+	if (get_tree().get_current_scene().get_name() == "BOSS"):
+		showBossHealth()
+		
+func update_score():
+	lb_score.text = str(score + scoreInLevel)
+	
+func next_level_delay(delay:float):
+	Global.play_sfx(sfx_finished)
+	yield(get_tree().create_timer(delay), "timeout")
+	Global.next_level()
 
 func reset_level(has_died):
 	if has_died:
 		_death_subtext = "Death"
+		score = score - (score * .2)
 	else:
 		_death_subtext = ""
 	
+	scoreInLevel = 0
+	update_score()
 	var scene = levels[current_level]
 	change_scenePacked(scene)
 	
@@ -153,6 +182,15 @@ func play_music(music : AudioStream, fade_dur: float = 0):
 		
 	_audio_bgm.stream = music
 	_audio_bgm.play()
+	pass
+	
+func play_backgroundsound(music : AudioStream, fade_dur: float = 0):
+	
+#	if _audio_bgm.stream == music:
+#		return
+#
+	_audio_bgs.stream = music
+	_audio_bgs.play()
 	pass
 	
 func fadeout_music(fade_dur: float):

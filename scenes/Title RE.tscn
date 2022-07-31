@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/Rotate.gd" type="Script" id=1]
 [ext_resource path="res://pixelart/ground/water.png" type="Texture" id=2]
@@ -7,11 +7,31 @@
 [ext_resource path="res://SmallFont.theme" type="Theme" id=5]
 [ext_resource path="res://scenes/Level 1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://audio/music/Game_Over_Blues_Final_no_Feedback.wav" type="AudioStream" id=7]
-[ext_resource path="res://world/world_env.tres" type="Environment" id=8]
 [ext_resource path="res://scripts/WorldSettings.gd" type="Script" id=11]
 [ext_resource path="res://models/spaceship/spaceship.fbx" type="PackedScene" id=12]
 [ext_resource path="res://pixelart/cat.png" type="Texture" id=13]
 [ext_resource path="res://scripts/CameraController.gd" type="Script" id=14]
+
+[sub_resource type="ProceduralSky" id=23]
+
+[sub_resource type="Environment" id=24]
+background_mode = 1
+background_sky = SubResource( 23 )
+background_color = Color( 0.560784, 0.670588, 0.670588, 1 )
+background_energy = 0.0
+ambient_light_color = Color( 1, 0.67451, 0.988235, 1 )
+ambient_light_energy = 0.15
+fog_enabled = true
+fog_color = Color( 0.517647, 0.67451, 0.698039, 0.960784 )
+fog_sun_amount = 0.15
+fog_depth_begin = 32.8
+fog_depth_end = 48.8
+fog_depth_curve = 1.27456
+fog_transmit_curve = 1.03526
+dof_blur_near_distance = 10.37
+glow_enabled = true
+glow_strength = 1.04
+glow_bloom = 0.08
 
 [sub_resource type="Animation" id=11]
 length = 0.001
@@ -123,7 +143,7 @@ script = ExtResource( 11 )
 music = ExtResource( 7 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 8 )
+environment = SubResource( 24 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.524194, -0.536217, 0.661583, 0, 0.776871, 0.629659, -0.851599, -0.330064, 0.407231, 4.40183, 2.79045, 2.57139 )
