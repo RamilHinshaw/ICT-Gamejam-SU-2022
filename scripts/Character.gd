@@ -15,6 +15,10 @@ var x_input = 0
 var y_input  = 0
 var shoot_input:bool = false
 
+#AUDIO
+export var sfx_death:AudioStream
+export var sfx_shoot:AudioStream
+
 # LOAD
 export var projectilePrefab = preload("res://prefabs/projectiles/PlayerProjectileTest.tscn")
 var lastProjectile:Projectile
@@ -79,6 +83,8 @@ func shoot(shoot_input):
 		get_tree().get_root().add_child(lastProjectile)
 		lastProjectile.global_transform.origin = global_transform.origin
 		lastProjectile.global_transform.origin += fireOffset
+		
+		Global.play_sfx(sfx_shoot)
 	
 func hurt(damage:int):
 	pass

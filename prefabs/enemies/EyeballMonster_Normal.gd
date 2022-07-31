@@ -3,6 +3,8 @@ extends Enemy
 var timer = 0
 export var timerInit = 1;
 
+export var moveDir:Vector2
+
 func _ready():
 	print(global_transform.origin.z)
 	print(LevelSettings.player.global_transform.origin.z)
@@ -19,6 +21,8 @@ func AI_LOGIC(dt):
 	
 		if timer <= 0:
 			attack()
+			
+		movement(dt, moveDir.x, moveDir.y)
 
 
 func attack():	
