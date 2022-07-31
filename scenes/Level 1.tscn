@@ -4,7 +4,7 @@
 [ext_resource path="res://pixelart/ground/water.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://audio/sfx/Buff 1.wav" type="AudioStream" id=4]
-[ext_resource path="res://pixelart/eye.png" type="Texture" id=5]
+[ext_resource path="res://pixelart/fish.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Hazard.gd" type="Script" id=6]
 [ext_resource path="res://scripts/Enemies/EyeballMonster_Normal.gd" type="Script" id=7]
 [ext_resource path="res://world/world_env.tres" type="Environment" id=8]
@@ -242,7 +242,7 @@ extents = Vector3( 3.0314, 1, 1 )
 
 [sub_resource type="Animation" id=24]
 resource_name = "Idle"
-length = 1.7
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:frame")
@@ -251,10 +251,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 5, 0, 5, 6, 0, 5, 6, 0, 5, 6 ]
+"values": [ 0, 1 ]
 }
 
 [sub_resource type="CubeMesh" id=14]
@@ -402,7 +402,7 @@ transform = Transform( -2.00433, 0, -1.81587e-07, 0, 2.00433, 0, 3.02646e-07, 0,
 [node name="EnemyEye" parent="_ENEMIES" instance=ExtResource( 27 )]
 
 [node name="EnemyFish" type="KinematicBody" parent="_ENEMIES"]
-transform = Transform( 0.695376, 0, -1.77636e-13, 0, 0.695376, 0, -7.10543e-13, 0, 0.695376, 3.81012, 0, -86.2312 )
+transform = Transform( 0.695375, 0, -1.77636e-13, 0, 0.695375, 0, -8.81073e-13, 0, 0.695376, -11.0782, -0.653425, -86.2312 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 7 )
@@ -410,8 +410,10 @@ sfx_death = ExtResource( 4 )
 sfx_shoot = ExtResource( 17 )
 projectilePrefab = ExtResource( 9 )
 aggroRange = 100.0
+useSinVert = true
+sinMagnitude = 4
 sinSpeed = 1
-moveDir = Vector2( 2, 0 )
+moveDir = Vector2( -1.5, 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/EnemyFish"]
 autoplay = "Idle"
@@ -441,7 +443,8 @@ shape = SubResource( 9 )
 [node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/EnemyFish"]
 transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
 texture = ExtResource( 5 )
-hframes = 7
+hframes = 2
+frame = 1
 
 [node name="Hitbox" type="Area" parent="_ENEMIES/EnemyFish"]
 transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
