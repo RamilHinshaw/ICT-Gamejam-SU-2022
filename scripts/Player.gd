@@ -30,15 +30,22 @@ func _physics_process(dt):
 	var shoot_input = 	Input.is_action_just_pressed("ui_accept")
 	
 	motion = movement(dt, x_input, y_input)
-	shoot(shoot_input)
+	lean(dt, x_input, y_input)
+	
 	shoot(shoot_input)
 
 	motion.z = 0	
 	move_and_slide(motion, Vector3.UP)
 	
 	
-func lean(x_input, y_input):
-	spaceship.lo
+func lean(dt, x_input, y_input):
+	
+#	var targetAngle = leanHorizontalMaxAngle * x_input
+	
+#	spaceship.rotate_object_local(Vector3.RIGHT, targetAngle)
+	
+	spaceship.rotation.z = lerp(spaceship.rotation.z, atan2(-x_input, 0)/2, 3 * dt)
+	
 	pass
 	
 func movement(dt, x_input, y_input):
