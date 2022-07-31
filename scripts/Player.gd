@@ -47,5 +47,10 @@ func hurt(damage:int):
 	health -= damage
 	print(health)
 	
+	if (health <= 0):
+		death()
+	
+	
 func death():
-	pass
+	print("DEATH!")
+

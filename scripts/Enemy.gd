@@ -4,11 +4,11 @@ export var clampPlayer:bool = true
 
 class_name Enemy
 
-func AI_LOGIC():
+func AI_LOGIC(delta):
 	pass
 
 func _process(delta):
-	AI_LOGIC()
+	AI_LOGIC(delta)
 	
 func hurt(damage:int):
 	health -= damage

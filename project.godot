@@ -42,8 +42,7 @@ config/name="ICT GameJam Summer 2022"
 config/description="Demo project featuring a collection of PS1 style shaders and materials for Godot engine.
 (MIT License)
 https://github.com/MenacingMecha/godot-psx-style-demo/"
-run/main_scene="res://scenes/level_0 psx.tscn"
-boot_splash/image="res://icon.png"
+run/main_scene="res://scenes/level_0.tscn"
 config/icon="res://readme-assets/screenshot.png"
 
 [autoload]
@@ -57,6 +56,30 @@ window/size/width=960
 window/size/height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
 
 [input]
 

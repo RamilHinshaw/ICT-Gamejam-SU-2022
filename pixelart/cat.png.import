@@ -2,28 +2,26 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/cat.png-8019b441ed83d8b97af7493441c79b32.s3tc.stex"
-path.etc="res://.import/cat.png-8019b441ed83d8b97af7493441c79b32.etc.stex"
+path="res://.import/cat.png-8019b441ed83d8b97af7493441c79b32.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://pixelart/cat.png"
-dest_files=[ "res://.import/cat.png-8019b441ed83d8b97af7493441c79b32.s3tc.stex", "res://.import/cat.png-8019b441ed83d8b97af7493441c79b32.etc.stex" ]
+dest_files=[ "res://.import/cat.png-8019b441ed83d8b97af7493441c79b32.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
+flags/repeat=0
 flags/filter=false
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=1
 process/fix_alpha_border=true
