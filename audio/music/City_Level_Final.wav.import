@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/City_Level_Final.wav-a8e08a75be925aac701f07c428a6d34d.sample"
+
+[deps]
+
+source_file="res://audio/music/City_Level_Final.wav"
+dest_files=[ "res://.import/City_Level_Final.wav-a8e08a75be925aac701f07c428a6d34d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

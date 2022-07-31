@@ -1,18 +1,19 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scripts/Rotate.gd" type="Script" id=1]
 [ext_resource path="res://world/floor.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=3]
-[ext_resource path="res://world/floor.tres" type="Material" id=4]
 [ext_resource path="res://pixelart/eye.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Hazard.gd" type="Script" id=6]
 [ext_resource path="res://prefabs/enemies/EyeballMonster_Normal.gd" type="Script" id=7]
 [ext_resource path="res://world/world_env.tres" type="Environment" id=8]
 [ext_resource path="res://prefabs/projectiles/EnemyProjectileTest.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/LevelController.gd" type="Script" id=10]
+[ext_resource path="res://scripts/WorldSettings.gd" type="Script" id=11]
 [ext_resource path="res://models/spaceship/spaceship.fbx" type="PackedScene" id=12]
 [ext_resource path="res://pixelart/cat.png" type="Texture" id=13]
 [ext_resource path="res://scripts/CameraController.gd" type="Script" id=14]
+[ext_resource path="res://audio/music/Water_Level_Final.wav" type="AudioStream" id=15]
 
 [sub_resource type="Animation" id=11]
 length = 0.001
@@ -82,8 +83,9 @@ subdivide_width = 25
 subdivide_depth = 25
 
 [sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0.764706, 0.631373, 0.470588, 1 )
 albedo_texture = ExtResource( 2 )
-uv1_scale = Vector3( 7.418, 31.022, 1 )
+uv1_scale = Vector3( 9.053, 350.954, 1 )
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 3.0314, 1, 1 )
@@ -128,6 +130,8 @@ flags_transparent = true
 albedo_color = Color( 1, 0.286275, 0.00784314, 0.831373 )
 
 [node name="Node" type="Node"]
+script = ExtResource( 11 )
+music = ExtResource( 15 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 8 )
@@ -208,7 +212,7 @@ frame = 1
 [node name="_STATIC" type="Spatial" parent="."]
 
 [node name="Floor" type="MeshInstance" parent="_STATIC"]
-transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 5.13366, -0.0091126, 0.00862217, 78.5623 )
+transform = Transform( 1.002, 0, 0, 0, 1.002, 0, 0, 0, 46.206, -0.009, 0.009, 900 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 10 )
 
@@ -218,44 +222,11 @@ material/0 = SubResource( 10 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
 shape = SubResource( 4 )
 
-[node name="Floor2" type="MeshInstance" parent="_STATIC"]
-transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 1.00176, 0, 0, 39.9976 )
-mesh = SubResource( 3 )
-material/0 = ExtResource( 4 )
-
-[node name="FloorBody" type="StaticBody" parent="_STATIC/Floor2"]
-
-[node name="CollisionShape" type="CollisionShape" parent="_STATIC/Floor2/FloorBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
-shape = SubResource( 4 )
-
-[node name="Floor3" type="MeshInstance" parent="_STATIC"]
-transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 1.00176, 0, 0, 79.7189 )
-mesh = SubResource( 3 )
-material/0 = ExtResource( 4 )
-
-[node name="FloorBody" type="StaticBody" parent="_STATIC/Floor3"]
-
-[node name="CollisionShape" type="CollisionShape" parent="_STATIC/Floor3/FloorBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
-shape = SubResource( 4 )
-
-[node name="Floor4" type="MeshInstance" parent="_STATIC"]
-transform = Transform( 1.00176, 0, 0, 0, 1.00176, 0, 0, 0, 1.00176, 0, 0, 119.717 )
-mesh = SubResource( 3 )
-material/0 = ExtResource( 4 )
-
-[node name="FloorBody" type="StaticBody" parent="_STATIC/Floor4"]
-
-[node name="CollisionShape" type="CollisionShape" parent="_STATIC/Floor4/FloorBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.993481, 0 )
-shape = SubResource( 4 )
-
 [node name="_ENEMIES" type="Spatial" parent="."]
 transform = Transform( -2.00433, 0, -1.81587e-07, 0, 2.00433, 0, 3.02646e-07, 0, -1.2026, 0, 4.0659, 15.1292 )
 
 [node name="EnemyEye" type="KinematicBody" parent="_ENEMIES"]
-transform = Transform( 0.554427, 0, -6.75016e-14, 0, 0.554427, 0, -2.84217e-13, 0, 0.554427, -6.9349e-12, 0, -21.247 )
+transform = Transform( 0.554427, 0, -7.4607e-14, 0, 0.554427, 0, -3.12639e-13, 0, 0.554427, -6.70752e-12, 0, -21.247 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 7 )
@@ -305,7 +276,7 @@ shape = SubResource( 17 )
 autostart = true
 
 [node name="End Level Trigger" type="Area" parent="."]
-transform = Transform( -1.57032, 0, -1.42267e-07, 0, 1.57032, 0, 2.37112e-07, 0, -0.942192, 2.32304e-05, 4.0659, 168.977 )
+transform = Transform( -1.57032, 0, -1.42267e-07, 0, 1.57032, 0, 2.37112e-07, 0, -0.942192, 0.000229019, 4.0659, 1531.85 )
 
 [node name="CollisionShape" type="CollisionShape" parent="End Level Trigger"]
 transform = Transform( 95.2326, 0, 8.53722e-06, 0, 55.2833, 0, 2.37145e-05, 0, 0.999999, 0, 0, 0 )
