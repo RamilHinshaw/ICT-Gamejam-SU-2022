@@ -5,7 +5,7 @@
 [ext_resource path="res://audio/sfx/Buff 1.wav" type="AudioStream" id=3]
 [ext_resource path="res://pixelart/eye.png" type="Texture" id=4]
 [ext_resource path="res://audio/sfx/Magical Impact 11.wav" type="AudioStream" id=5]
-[ext_resource path="res://scripts/Enemies/EyeballMonster_Normal.gd" type="Script" id=6]
+[ext_resource path="res://scripts/Enemies/EnemyGeneric.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=16]
 resource_name = "Idle"

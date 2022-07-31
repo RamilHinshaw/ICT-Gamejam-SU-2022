@@ -1,7 +1,7 @@
 extends Enemy
 
 var timer = 0
-export var timerInit = 1;
+export var attackDelay = 1;
 
 export var useSinVert:bool = false
 export var useSinHori:bool = false
@@ -15,7 +15,7 @@ var sinVal:float
 func _ready():
 #	print(global_transform.origin.z)
 #	print(LevelSettings.player.global_transform.origin.z)
-	timer = timerInit
+	timer = attackDelay
 
 func AI_LOGIC(dt):	
 	
@@ -49,7 +49,7 @@ func AI_LOGIC(dt):
 func attack():	
 #	print("EYE MONSTER FIRED!")
 	shoot(true)
-	timer = timerInit
+	timer = attackDelay
 
 func shoot(shoot_input):
 	.shoot(shoot_input)

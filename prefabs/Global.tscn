@@ -89,6 +89,12 @@ autoplay = true
 
 [node name="Sfx03" type="AudioStreamPlayer" parent="."]
 
+[node name="Sfx04" type="AudioStreamPlayer" parent="."]
+
+[node name="Sfx05" type="AudioStreamPlayer" parent="."]
+
+[node name="Sfx06" type="AudioStreamPlayer" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]

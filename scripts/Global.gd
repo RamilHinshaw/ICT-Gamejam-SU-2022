@@ -32,6 +32,9 @@ onready var _audio_bgs:AudioStreamPlayer = $BGS
 onready var _audio_sfx01:AudioStreamPlayer = $Sfx01
 onready var _audio_sfx02:AudioStreamPlayer = $Sfx02
 onready var _audio_sfx03:AudioStreamPlayer = $Sfx03
+onready var _audio_sfx04:AudioStreamPlayer = $Sfx04
+onready var _audio_sfx05:AudioStreamPlayer = $Sfx05
+onready var _audio_sfx06:AudioStreamPlayer = $Sfx06
 var _sfx_counter:int = 0 #used to play the next buffer
 # ---------------------------------------------------
 
@@ -153,9 +156,12 @@ func play_sfx(sfx : AudioStream):
 		0: player = _audio_sfx01
 		1: player = _audio_sfx02
 		2: player = _audio_sfx03
+		3: player = _audio_sfx04
+		4: player = _audio_sfx05
+		5: player = _audio_sfx06
 		
 	_sfx_counter += 1
-	if _sfx_counter > 2:
+	if _sfx_counter > 5:
 		_sfx_counter = 0
 		
 	player.stream = sfx
