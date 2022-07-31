@@ -9,6 +9,8 @@ export var sfx_finished:AudioStream
 #
 #var can_pause:bool = true
 
+export var explosionPrefab = preload("res://prefabs/Explosion.tscn")
+
 export(Array, PackedScene) var levels
 export var last_level:PackedScene
 export var title_level:PackedScene
@@ -53,6 +55,12 @@ func _ready():
 	_control.visible = false
 	print(get_tree().get_current_scene().get_name())
 
+
+func add_explosion(pos:Vector3):
+		var explosion = explosionPrefab.instance()
+		get_tree().get_root().add_child(explosion)
+		explosion.global_transform.origin = pos
+	
 
 func _process(delta):
 	

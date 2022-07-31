@@ -22,4 +22,5 @@ func death():
 	Global.play_sfx(sfx_death)
 	Global.scoreInLevel += points
 	Global.update_score()
+	Global.add_explosion(global_transform.origin)
 	queue_free()

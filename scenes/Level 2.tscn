@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://scripts/Rotate.gd" type="Script" id=1]
 [ext_resource path="res://textures/Floor_Concrete_3D_p.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://audio/sfx/Buff 1.wav" type="AudioStream" id=4]
 [ext_resource path="res://scripts/Hazard.gd" type="Script" id=6]
 [ext_resource path="res://scripts/Enemies/EnemyGeneric.gd" type="Script" id=7]
-[ext_resource path="res://world/world_env.tres" type="Environment" id=8]
 [ext_resource path="res://prefabs/projectiles/EnemyProjectileTest.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/LevelController.gd" type="Script" id=10]
 [ext_resource path="res://scripts/WorldSettings.gd" type="Script" id=11]
@@ -31,6 +30,26 @@
 [ext_resource path="res://audio/sfx/LevelCompleteSFX.wav" type="AudioStream" id=30]
 [ext_resource path="res://models/building1/building1.fbx" type="PackedScene" id=31]
 [ext_resource path="res://models/building2/building2.fbx" type="PackedScene" id=32]
+
+[sub_resource type="ProceduralSky" id=48]
+
+[sub_resource type="Environment" id=49]
+background_mode = 1
+background_sky = SubResource( 48 )
+background_color = Color( 0.568627, 0.466667, 0.356863, 1 )
+background_energy = 0.0
+ambient_light_color = Color( 1, 0.67451, 0.988235, 1 )
+ambient_light_energy = 0.15
+fog_color = Color( 0.670588, 0.466667, 0.301961, 0.960784 )
+fog_sun_amount = 0.15
+fog_depth_begin = 32.8
+fog_depth_end = 48.8
+fog_depth_curve = 1.27456
+fog_transmit_curve = 1.03526
+dof_blur_near_distance = 10.37
+glow_enabled = true
+glow_strength = 1.04
+glow_bloom = 0.08
 
 [sub_resource type="Animation" id=11]
 length = 0.001
@@ -294,6 +313,23 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
+[sub_resource type="Animation" id=50]
+resource_name = "Idle"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
 [sub_resource type="Animation" id=42]
 resource_name = "Idle"
 length = 1.2
@@ -348,7 +384,7 @@ script = ExtResource( 11 )
 music = ExtResource( 15 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 8 )
+environment = SubResource( 49 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.524194, -0.536217, 0.661583, 0, 0.776871, 0.629659, -0.851599, -0.330064, 0.407231, 4.40183, 2.79045, 2.57139 )
@@ -674,7 +710,7 @@ autostart = true
 [node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/EnemyDragon5"]
 
 [node name="EnemyDragon big" type="KinematicBody" parent="_ENEMIES"]
-transform = Transform( 1.60359, 0, -4.26326e-13, 0, 1.60359, 0, -3.78009e-12, 0, 1.6036, -2.22194, 2.88213, -341.84 )
+transform = Transform( 1.29308, 0, -3.76588e-13, 0, 1.29308, 0, -3.04112e-12, 0, 1.29308, -5.49605, 4.74909, -341.84 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 7 )
@@ -685,7 +721,7 @@ aggroRange = 100.0
 attackDelay = 0.5
 useSinVert = true
 useSinHori = true
-sinMagnitude = 4
+sinMagnitude = 3
 sinSpeed = 1
 moveDir = Vector2( -1.5, 1 )
 
@@ -732,6 +768,66 @@ shape = SubResource( 17 )
 autostart = true
 
 [node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/EnemyDragon big"]
+
+[node name="EnemyDragon big2" type="KinematicBody" parent="_ENEMIES"]
+transform = Transform( 1.29308, 0, -4.26326e-13, 0, 1.29308, 0, -3.04112e-12, 0, 1.29308, 1.83633, 4.86537, -341.811 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 7 )
+sfx_death = ExtResource( 4 )
+sfx_shoot = ExtResource( 17 )
+projectilePrefab = ExtResource( 9 )
+aggroRange = 100.0
+attackDelay = 0.5
+useSinVert = true
+useSinHori = true
+sinMagnitude = 3
+sinSpeed = 1
+moveDir = Vector2( -1.5, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_ENEMIES/EnemyDragon big2"]
+autoplay = "Idle"
+anims/Idle = SubResource( 50 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyDragon big2"]
+transform = Transform( -4.37114e-08, 0, 0.447176, 0, 0.448509, 0, -1, 0, -1.95467e-08, 0, 0.0197377, 0 )
+visible = false
+mesh = SubResource( 14 )
+skeleton = NodePath("")
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="_ENEMIES/EnemyDragon big2/MeshInstance"]
+transform = Transform( 0.237268, 0, -4.76427e-09, 0, 0.438921, 0, -2.38254e-08, 0, 0.481007, -1.16687, 0, -1.14062e-07 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="_ENEMIES/EnemyDragon big2/MeshInstance"]
+transform = Transform( 0.5104, 0, -3.78233e-08, 0, 0.159723, 0, -1.89148e-07, 0, 2.44542, 0.255975, 0, 2.50215e-08 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="Hurtbox" type="CollisionShape" parent="_ENEMIES/EnemyDragon big2"]
+transform = Transform( 1.29505, 0, 2.13163e-14, 0, 1.51607, 0, -2.84217e-14, 0, 1.29505, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[node name="Sprite3D" type="Sprite3D" parent="_ENEMIES/EnemyDragon big2"]
+transform = Transform( 3.44474, 0, -2.84217e-14, 0, 3.44474, 0, -1.7053e-13, 0, 3.44474, 0, 0, 0 )
+flip_h = true
+texture = ExtResource( 28 )
+hframes = 6
+
+[node name="Hitbox" type="Area" parent="_ENEMIES/EnemyDragon big2"]
+transform = Transform( 1.15037, 0, -2.84217e-14, 0, 3.61538, 0, 8.52651e-14, 0, 0.360077, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="_ENEMIES/EnemyDragon big2/Hitbox"]
+transform = Transform( 1.43144, 0, 0, 0, 0.550784, 0, 0, 0, 0.550785, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="_ENEMIES/EnemyDragon big2"]
+autostart = true
+
+[node name="AnimationPlayerMovement" type="AnimationPlayer" parent="_ENEMIES/EnemyDragon big2"]
 
 [node name="EnemyDragon2" type="KinematicBody" parent="_ENEMIES"]
 transform = Transform( -0.346936, 0, 5.23859e-08, 0, 0.346936, 0, -8.73089e-08, 0, -0.578227, 2.38644, -2.35456, 111.968 )
@@ -1109,6 +1205,7 @@ shape = SubResource( 37 )
 [connection signal="body_entered" from="_ENEMIES/EnemyDragon3/Hitbox" to="_ENEMIES/EnemyDragon3/Hitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="_ENEMIES/EnemyDragon5/Hitbox" to="_ENEMIES/EnemyDragon5/Hitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="_ENEMIES/EnemyDragon big/Hitbox" to="_ENEMIES/EnemyDragon big/Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="_ENEMIES/EnemyDragon big2/Hitbox" to="_ENEMIES/EnemyDragon big2/Hitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="_ENEMIES/EnemyDragon2/Hitbox" to="_ENEMIES/EnemyDragon2/Hitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="End Level Trigger" to="End Level Trigger" method="_on_body_entered"]
 [connection signal="body_entered" from="building1/Hitbox" to="building1/Hitbox" method="_on_body_entered"]
