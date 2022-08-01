@@ -31,6 +31,7 @@
 [ext_resource path="res://models/building1/building1.fbx" type="PackedScene" id=31]
 [ext_resource path="res://models/building2/building2.fbx" type="PackedScene" id=32]
 
+
 [sub_resource type="ProceduralSky" id=48]
 
 [sub_resource type="Environment" id=49]

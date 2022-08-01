@@ -35,7 +35,7 @@ _global_script_classes=[ {
 "path": "res://scripts/LevelController.gd"
 }, {
 "base": "Character",
-"class": "Player",
+"class": "PlayerChar",
 "language": "GDScript",
 "path": "res://scripts/Player.gd"
 }, {
@@ -50,18 +50,14 @@ _global_script_class_icons={
 "Enemy": "",
 "Interactable": "",
 "LevelController": "",
-"Player": "",
+"PlayerChar": "",
 "Projectile": ""
 }
 
 [application]
 
 config/name="ICT GameJam Summer 2022"
-config/description="Demo project featuring a collection of PS1 style shaders and materials for Godot engine.
-(MIT License)
-https://github.com/MenacingMecha/godot-psx-style-demo/"
 run/main_scene="res://scenes/Title RE.tscn"
-config/icon="res://readme-assets/screenshot.png"
 
 [autoload]
 

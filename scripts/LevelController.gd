@@ -11,7 +11,7 @@ export var clampVertical:Vector2 = Vector2(-5,5)
 var _motion = Vector3.ZERO
 
 
-onready var player:Player = $Player
+onready var player:PlayerChar = $Player
 
 
 

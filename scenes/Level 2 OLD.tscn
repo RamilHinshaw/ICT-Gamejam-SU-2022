@@ -27,6 +27,7 @@
 [ext_resource path="res://models/spaceship/Material_006.material" type="Material" id=25]
 [ext_resource path="res://scripts/EndLevelTrigger.gd" type="Script" id=26]
 
+
 [sub_resource type="Animation" id=11]
 length = 0.001
 

@@ -46,7 +46,7 @@ onready var _audio_sfx06:AudioStreamPlayer = $Sfx06
 var _sfx_counter:int = 0 #used to play the next buffer
 # ---------------------------------------------------
 
-onready var death_animation:AnimationPlayer = $DeathAnimation/AnimationPlayer
+#onready var death_animation:AnimationPlayer = $DeathAnimation/AnimationPlayer
 
 #PLAYER INFO : HARDCODED IN!
 #var player:KinematicBody2D

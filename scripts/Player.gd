@@ -1,6 +1,6 @@
 extends Character
 
-class_name Player
+class_name PlayerChar
 
 export var canLean:bool = true
 
