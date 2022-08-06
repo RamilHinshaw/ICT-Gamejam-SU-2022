@@ -10,6 +10,9 @@ func _on_pressed():
 	
 	else:
 		change_scene()
+		Global.current_level = 0
+		Global.scoreInLevel = 0
+		Global.lb_score.text = str(Global.score)
 
 #Kinda hardcoded eeesh
 func _ready():
